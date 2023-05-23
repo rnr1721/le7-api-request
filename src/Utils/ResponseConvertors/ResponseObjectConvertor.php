@@ -53,7 +53,7 @@ class ResponseObjectConvertor implements ResponseConvertorInterface
             throw new RuntimeException('Response is empty');
         }
 
-        $contentType = $this->getContentType($response);
+        $contentType = $this->getContentType($this->response);
 
         $body = (string) $this->response->getBody();
 

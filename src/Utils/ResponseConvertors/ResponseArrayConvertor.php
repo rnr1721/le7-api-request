@@ -15,7 +15,6 @@ use function json_decode,
              simplexml_load_string,
              libxml_get_errors,
              libxml_clear_errors,
-             is_array,
              str_getcsv,
              array_filter;
 use const JSON_ERROR_NONE;
@@ -63,7 +62,7 @@ class ResponseArrayConvertor implements ResponseConvertorInterface
             throw new RuntimeException('Response is empty');
         }
 
-        $contentType = $this->getContentType($response);
+        $contentType = $this->getContentType($this->response);
 
         $body = (string) $this->response->getBody();
 
