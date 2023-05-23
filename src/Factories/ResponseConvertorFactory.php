@@ -7,8 +7,8 @@ namespace Core\Factories;
 use Psr\Http\Message\ResponseInterface;
 use Core\Interfaces\ResponseConvertorInterface;
 use Core\Interfaces\ResponseConvertorFactoryInterface;
-use Core\Utils\ResponseConvertors\ResponseJsonArrayConvertor;
-use Core\Utils\ResponseConvertors\ResponseJsonObjectConvertor;
+use Core\Utils\ResponseConvertors\ResponseArrayConvertor;
+use Core\Utils\ResponseConvertors\ResponseObjectConvertor;
 use \InvalidArgumentException;
 
 /**
@@ -43,9 +43,9 @@ class ResponseConvertorFactory implements ResponseConvertorFactoryInterface
      */
     public function toArray(
             ?ResponseInterface $response = null
-    ): ResponseJsonArrayConvertor
+    ): ResponseArrayConvertor
     {
-        return new ResponseJsonArrayConvertor($response ?? $this->response);
+        return new ResponseArrayConvertor($response ?? $this->response);
     }
 
     /**
@@ -53,9 +53,9 @@ class ResponseConvertorFactory implements ResponseConvertorFactoryInterface
      */
     public function toObject(
             ?ResponseInterface $response = null
-    ): ResponseJsonObjectConvertor
+    ): ResponseObjectConvertor
     {
-        return new ResponseJsonObjectConvertor($response ?? $this->response);
+        return new ResponseObjectConvertor($response ?? $this->response);
     }
 
     /**
@@ -65,7 +65,7 @@ class ResponseConvertorFactory implements ResponseConvertorFactoryInterface
     public function get(): mixed
     {
         if ($this->convertor === null) {
-            throw new InvalidArgumentException("You must set custom converter");
+            throw new InvalidArgumentException("You must set default converter");
         }
         return $this->convertor->get($this->response);
     }

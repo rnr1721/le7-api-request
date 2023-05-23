@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Core\Interfaces;
 
-use Core\Utils\ResponseConvertors\ResponseJsonArrayConvertor;
-use Core\Utils\ResponseConvertors\ResponseJsonObjectConvertor;
+use Core\Utils\ResponseConvertors\ResponseArrayConvertor;
+use Core\Utils\ResponseConvertors\ResponseObjectConvertor;
 use Psr\Http\Message\ResponseInterface;
 
 /**
@@ -18,21 +18,21 @@ interface ResponseConvertorFactoryInterface
      * Get converter to array
      * 
      * @param ResponseInterface|null $response
-     * @return ResponseJsonArrayConvertor
+     * @return ResponseArrayConvertor
      */
     public function toArray(
             ?ResponseInterface $response = null
-    ): ResponseJsonArrayConvertor;
+    ): ResponseArrayConvertor;
 
     /**
      * Get converter to object
      * 
      * @param ResponseInterface|null $response
-     * @return ResponseJsonObjectConvertor
+     * @return ResponseObjectConvertor
      */
     public function toObject(
             ?ResponseInterface $response = null
-    ): ResponseJsonObjectConvertor;
+    ): ResponseObjectConvertor;
 
     /**
      * Get data from default converter

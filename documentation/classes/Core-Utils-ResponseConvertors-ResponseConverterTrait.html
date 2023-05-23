@@ -98,29 +98,24 @@
             <div class="phpdocumentor-column -eight phpdocumentor-content">
                     <ul class="phpdocumentor-breadcrumbs">
             <li class="phpdocumentor-breadcrumb"><a href="namespaces/core.html">Core</a></li>
-            <li class="phpdocumentor-breadcrumb"><a href="namespaces/core-interfaces.html">Interfaces</a></li>
+            <li class="phpdocumentor-breadcrumb"><a href="namespaces/core-utils.html">Utils</a></li>
+            <li class="phpdocumentor-breadcrumb"><a href="namespaces/core-utils-responseconvertors.html">ResponseConvertors</a></li>
     </ul>
 
-    <article class="phpdocumentor-element -interface">
+    <article class="phpdocumentor-element -trait">
         <h2 class="phpdocumentor-content__title">
-    ResponseConvertorFactoryInterface
-                <div class="phpdocumentor-element__package">
-            in
-            <ul class="phpdocumentor-breadcrumbs">
-                                    <li><a href="packages/Application.html">Application</a></li>
-                            </ul>
-        </div>
+    ResponseConverterTrait
     </h2>
 
         <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/Interfaces/ResponseConvertorFactoryInterface.php"><a href="files/src-interfaces-responseconvertorfactoryinterface.html"><abbr title="src/Interfaces/ResponseConvertorFactoryInterface.php">ResponseConvertorFactoryInterface.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Utils/ResponseConvertors/ResponseConverterTrait.php"><a href="files/src-utils-responseconvertors-responseconvertertrait.html"><abbr title="src/Utils/ResponseConvertors/ResponseConverterTrait.php">ResponseConverterTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">14</span>
+    <span class="phpdocumentor-element-found-in__line">5</span>
 
     </aside>
 
-            <p class="phpdocumentor-summary">Factory for get converters</p>
-
+        
+    <section class="phpdocumentor-description"></section>
 
 
 
@@ -135,26 +130,19 @@
 </h3>
 
 <dl class="phpdocumentor-table-of-contents">
-                        <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/Core-Interfaces-ResponseConvertorFactoryInterface.html#method_get">get()</a>
+                        <dt class="phpdocumentor-table-of-contents__entry -method -protected">
+    <a href="classes/Core-Utils-ResponseConvertors-ResponseConverterTrait.html#method_convertCsvToArray">convertCsvToArray()</a>
     <span>
-                                &nbsp;: mixed    </span>
+                                &nbsp;: array&lt;string|int, mixed&gt;    </span>
 </dt>
-<dd>Get data from default converter</dd>
+<dd></dd>
 
-            <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/Core-Interfaces-ResponseConvertorFactoryInterface.html#method_toArray">toArray()</a>
+            <dt class="phpdocumentor-table-of-contents__entry -method -protected">
+    <a href="classes/Core-Utils-ResponseConvertors-ResponseConverterTrait.html#method_formatXmlErrors">formatXmlErrors()</a>
     <span>
-                                &nbsp;: <a href="classes/Core-Utils-ResponseConvertors-ResponseArrayConvertor.html"><abbr title="\Core\Utils\ResponseConvertors\ResponseArrayConvertor">ResponseArrayConvertor</abbr></a>    </span>
+                                &nbsp;: string    </span>
 </dt>
-<dd>Get converter to array</dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/Core-Interfaces-ResponseConvertorFactoryInterface.html#method_toObject">toObject()</a>
-    <span>
-                                &nbsp;: <a href="classes/Core-Utils-ResponseConvertors-ResponseObjectConvertor.html"><abbr title="\Core\Utils\ResponseConvertors\ResponseObjectConvertor">ResponseObjectConvertor</abbr></a>    </span>
-</dt>
-<dd>Get converter to object</dd>
+<dd></dd>
 
         </dl>
 
@@ -165,37 +153,48 @@
             <section class="phpdocumentor-methods">
         <h3 class="phpdocumentor-elements__header" id="methods">
             Methods
-            <a href="classes/Core-Interfaces-ResponseConvertorFactoryInterface.html#methods" class="headerlink"><i class="fas fa-link"></i></a>
+            <a href="classes/Core-Utils-ResponseConvertors-ResponseConverterTrait.html#methods" class="headerlink"><i class="fas fa-link"></i></a>
         </h3>
                     <article
         class="phpdocumentor-element
             -method
-            -public
+            -protected
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="method_get">
-        get()
-        <a href="classes/Core-Interfaces-ResponseConvertorFactoryInterface.html#method_get" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="method_convertCsvToArray">
+        convertCsvToArray()
+        <a href="classes/Core-Utils-ResponseConvertors-ResponseConverterTrait.html#method_convertCsvToArray" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/Interfaces/ResponseConvertorFactoryInterface.php"><a href="files/src-interfaces-responseconvertorfactoryinterface.html"><abbr title="src/Interfaces/ResponseConvertorFactoryInterface.php">ResponseConvertorFactoryInterface.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Utils/ResponseConvertors/ResponseConverterTrait.php"><a href="files/src-utils-responseconvertors-responseconvertertrait.html"><abbr title="src/Utils/ResponseConvertors/ResponseConverterTrait.php">ResponseConverterTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">42</span>
+    <span class="phpdocumentor-element-found-in__line">8</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Get data from default converter</p>
-
+    
     <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">get</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+    <span class="phpdocumentor-signature__visibility">protected</span>
+                    <span class="phpdocumentor-signature__name">convertCsvToArray</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$body</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
 
-    
-    
+        <section class="phpdocumentor-description"></section>
+
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$body</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"></section>
+
+            </dd>
+            </dl>
+
     
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">mixed</span>
+    <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span>
             &mdash;
         
     
@@ -203,85 +202,43 @@
                     <article
         class="phpdocumentor-element
             -method
-            -public
+            -protected
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="method_toArray">
-        toArray()
-        <a href="classes/Core-Interfaces-ResponseConvertorFactoryInterface.html#method_toArray" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="method_formatXmlErrors">
+        formatXmlErrors()
+        <a href="classes/Core-Utils-ResponseConvertors-ResponseConverterTrait.html#method_formatXmlErrors" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/Interfaces/ResponseConvertorFactoryInterface.php"><a href="files/src-interfaces-responseconvertorfactoryinterface.html"><abbr title="src/Interfaces/ResponseConvertorFactoryInterface.php">ResponseConvertorFactoryInterface.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Utils/ResponseConvertors/ResponseConverterTrait.php"><a href="files/src-utils-responseconvertors-responseconvertertrait.html"><abbr title="src/Utils/ResponseConvertors/ResponseConverterTrait.php">ResponseConverterTrait.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">23</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Get converter to array</p>
-
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">toArray</span><span>(</span><span class="phpdocumentor-signature__argument"><span>[</span><span class="phpdocumentor-signature__argument__return-type"><abbr title="\Psr\Http\Message\ResponseInterface">ResponseInterface</abbr>|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$response</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><a href="classes/Core-Utils-ResponseConvertors-ResponseArrayConvertor.html"><abbr title="\Core\Utils\ResponseConvertors\ResponseArrayConvertor">ResponseArrayConvertor</abbr></a></span></code>
-
     
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+                    <span class="phpdocumentor-signature__name">formatXmlErrors</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$errors</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
+
+        <section class="phpdocumentor-description"></section>
+
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$response</span>
-                : <span class="phpdocumentor-signature__argument__return-type"><abbr title="\Psr\Http\Message\ResponseInterface">ResponseInterface</abbr>|null</span>
-                 = <span class="phpdocumentor-signature__argument__default-value">null</span>            </dt>
+                <span class="phpdocumentor-signature__argument__name">$errors</span>
+                : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;</span>
+                            </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                
+                    <section class="phpdocumentor-description"></section>
+
             </dd>
             </dl>
 
     
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type"><a href="classes/Core-Utils-ResponseConvertors-ResponseArrayConvertor.html"><abbr title="\Core\Utils\ResponseConvertors\ResponseArrayConvertor">ResponseArrayConvertor</abbr></a></span>
-            &mdash;
-        
-    
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -public
-                                                        "
->
-    <h4 class="phpdocumentor-element__name" id="method_toObject">
-        toObject()
-        <a href="classes/Core-Interfaces-ResponseConvertorFactoryInterface.html#method_toObject" class="headerlink"><i class="fas fa-link"></i></a>
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/Interfaces/ResponseConvertorFactoryInterface.php"><a href="files/src-interfaces-responseconvertorfactoryinterface.html"><abbr title="src/Interfaces/ResponseConvertorFactoryInterface.php">ResponseConvertorFactoryInterface.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">33</span>
-
-    </aside>
-
-        <p class="phpdocumentor-summary">Get converter to object</p>
-
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">toObject</span><span>(</span><span class="phpdocumentor-signature__argument"><span>[</span><span class="phpdocumentor-signature__argument__return-type"><abbr title="\Psr\Http\Message\ResponseInterface">ResponseInterface</abbr>|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$response</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><a href="classes/Core-Utils-ResponseConvertors-ResponseObjectConvertor.html"><abbr title="\Core\Utils\ResponseConvertors\ResponseObjectConvertor">ResponseObjectConvertor</abbr></a></span></code>
-
-    
-        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
-    <dl class="phpdocumentor-argument-list">
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$response</span>
-                : <span class="phpdocumentor-signature__argument__return-type"><abbr title="\Psr\Http\Message\ResponseInterface">ResponseInterface</abbr>|null</span>
-                 = <span class="phpdocumentor-signature__argument__default-value">null</span>            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                
-            </dd>
-            </dl>
-
-    
-
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type"><a href="classes/Core-Utils-ResponseConvertors-ResponseObjectConvertor.html"><abbr title="\Core\Utils\ResponseConvertors\ResponseObjectConvertor">ResponseObjectConvertor</abbr></a></span>
+    <span class="phpdocumentor-signature__response_type">string</span>
             &mdash;
         
     
@@ -364,7 +321,7 @@
 </section>
             </div>
         </div>
-        <a href="classes/Core-Interfaces-ResponseConvertorFactoryInterface.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
+        <a href="classes/Core-Utils-ResponseConvertors-ResponseConverterTrait.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
 
     </main>
 

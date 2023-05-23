@@ -421,45 +421,95 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/Core-Utils-MultipartFormdataTrait.html#property_streamFactory"
         },                {
-            "fqsen": "\\Core\\Utils\\ResponseConvertors\\ResponseJsonArrayConvertor",
-            "name": "ResponseJsonArrayConvertor",
-            "summary": "ResponseInterface\u0020to\u0020array\u0020convertor",
-            "url": "classes/Core-Utils-ResponseConvertors-ResponseJsonArrayConvertor.html"
+            "fqsen": "\\Core\\Utils\\ResponseConvertors\\ResponseArrayConvertor",
+            "name": "ResponseArrayConvertor",
+            "summary": "",
+            "url": "classes/Core-Utils-ResponseConvertors-ResponseArrayConvertor.html"
         },                {
-            "fqsen": "\\Core\\Utils\\ResponseConvertors\\ResponseJsonArrayConvertor\u003A\u003A__construct\u0028\u0029",
+            "fqsen": "\\Core\\Utils\\ResponseConvertors\\ResponseArrayConvertor\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
             "summary": "",
-            "url": "classes/Core-Utils-ResponseConvertors-ResponseJsonArrayConvertor.html#method___construct"
+            "url": "classes/Core-Utils-ResponseConvertors-ResponseArrayConvertor.html#method___construct"
         },                {
-            "fqsen": "\\Core\\Utils\\ResponseConvertors\\ResponseJsonArrayConvertor\u003A\u003Aget\u0028\u0029",
+            "fqsen": "\\Core\\Utils\\ResponseConvertors\\ResponseArrayConvertor\u003A\u003Aget\u0028\u0029",
             "name": "get",
-            "summary": "Get\u0020array\u0020from\u0020ResponseInterface",
-            "url": "classes/Core-Utils-ResponseConvertors-ResponseJsonArrayConvertor.html#method_get"
+            "summary": "",
+            "url": "classes/Core-Utils-ResponseConvertors-ResponseArrayConvertor.html#method_get"
         },                {
-            "fqsen": "\\Core\\Utils\\ResponseConvertors\\ResponseJsonArrayConvertor\u003A\u003A\u0024response",
+            "fqsen": "\\Core\\Utils\\ResponseConvertors\\ResponseArrayConvertor\u003A\u003AconvertJsonToArray\u0028\u0029",
+            "name": "convertJsonToArray",
+            "summary": "",
+            "url": "classes/Core-Utils-ResponseConvertors-ResponseArrayConvertor.html#method_convertJsonToArray"
+        },                {
+            "fqsen": "\\Core\\Utils\\ResponseConvertors\\ResponseArrayConvertor\u003A\u003AconvertXmlToArray\u0028\u0029",
+            "name": "convertXmlToArray",
+            "summary": "",
+            "url": "classes/Core-Utils-ResponseConvertors-ResponseArrayConvertor.html#method_convertXmlToArray"
+        },                {
+            "fqsen": "\\Core\\Utils\\ResponseConvertors\\ResponseArrayConvertor\u003A\u003AnormalizeXmlToArray\u0028\u0029",
+            "name": "normalizeXmlToArray",
+            "summary": "",
+            "url": "classes/Core-Utils-ResponseConvertors-ResponseArrayConvertor.html#method_normalizeXmlToArray"
+        },                {
+            "fqsen": "\\Core\\Utils\\ResponseConvertors\\ResponseArrayConvertor\u003A\u003A\u0024response",
             "name": "response",
             "summary": "",
-            "url": "classes/Core-Utils-ResponseConvertors-ResponseJsonArrayConvertor.html#property_response"
+            "url": "classes/Core-Utils-ResponseConvertors-ResponseArrayConvertor.html#property_response"
         },                {
-            "fqsen": "\\Core\\Utils\\ResponseConvertors\\ResponseJsonObjectConvertor",
-            "name": "ResponseJsonObjectConvertor",
-            "summary": "ResponseInterface\u0020to\u0020object\u0020convertor",
-            "url": "classes/Core-Utils-ResponseConvertors-ResponseJsonObjectConvertor.html"
+            "fqsen": "\\Core\\Utils\\ResponseConvertors\\ResponseConverterTrait",
+            "name": "ResponseConverterTrait",
+            "summary": "",
+            "url": "classes/Core-Utils-ResponseConvertors-ResponseConverterTrait.html"
         },                {
-            "fqsen": "\\Core\\Utils\\ResponseConvertors\\ResponseJsonObjectConvertor\u003A\u003A__construct\u0028\u0029",
+            "fqsen": "\\Core\\Utils\\ResponseConvertors\\ResponseConverterTrait\u003A\u003AconvertCsvToArray\u0028\u0029",
+            "name": "convertCsvToArray",
+            "summary": "",
+            "url": "classes/Core-Utils-ResponseConvertors-ResponseConverterTrait.html#method_convertCsvToArray"
+        },                {
+            "fqsen": "\\Core\\Utils\\ResponseConvertors\\ResponseConverterTrait\u003A\u003AformatXmlErrors\u0028\u0029",
+            "name": "formatXmlErrors",
+            "summary": "",
+            "url": "classes/Core-Utils-ResponseConvertors-ResponseConverterTrait.html#method_formatXmlErrors"
+        },                {
+            "fqsen": "\\Core\\Utils\\ResponseConvertors\\ResponseObjectConvertor",
+            "name": "ResponseObjectConvertor",
+            "summary": "",
+            "url": "classes/Core-Utils-ResponseConvertors-ResponseObjectConvertor.html"
+        },                {
+            "fqsen": "\\Core\\Utils\\ResponseConvertors\\ResponseObjectConvertor\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
             "summary": "",
-            "url": "classes/Core-Utils-ResponseConvertors-ResponseJsonObjectConvertor.html#method___construct"
+            "url": "classes/Core-Utils-ResponseConvertors-ResponseObjectConvertor.html#method___construct"
         },                {
-            "fqsen": "\\Core\\Utils\\ResponseConvertors\\ResponseJsonObjectConvertor\u003A\u003Aget\u0028\u0029",
+            "fqsen": "\\Core\\Utils\\ResponseConvertors\\ResponseObjectConvertor\u003A\u003Aget\u0028\u0029",
             "name": "get",
-            "summary": "Convert\u0020ResponseInterface\u0020to\u0020object",
-            "url": "classes/Core-Utils-ResponseConvertors-ResponseJsonObjectConvertor.html#method_get"
+            "summary": "",
+            "url": "classes/Core-Utils-ResponseConvertors-ResponseObjectConvertor.html#method_get"
         },                {
-            "fqsen": "\\Core\\Utils\\ResponseConvertors\\ResponseJsonObjectConvertor\u003A\u003A\u0024response",
+            "fqsen": "\\Core\\Utils\\ResponseConvertors\\ResponseObjectConvertor\u003A\u003AconvertJsonToObject\u0028\u0029",
+            "name": "convertJsonToObject",
+            "summary": "",
+            "url": "classes/Core-Utils-ResponseConvertors-ResponseObjectConvertor.html#method_convertJsonToObject"
+        },                {
+            "fqsen": "\\Core\\Utils\\ResponseConvertors\\ResponseObjectConvertor\u003A\u003AconvertXmlToObject\u0028\u0029",
+            "name": "convertXmlToObject",
+            "summary": "",
+            "url": "classes/Core-Utils-ResponseConvertors-ResponseObjectConvertor.html#method_convertXmlToObject"
+        },                {
+            "fqsen": "\\Core\\Utils\\ResponseConvertors\\ResponseObjectConvertor\u003A\u003AnormalizeXmlToObject\u0028\u0029",
+            "name": "normalizeXmlToObject",
+            "summary": "",
+            "url": "classes/Core-Utils-ResponseConvertors-ResponseObjectConvertor.html#method_normalizeXmlToObject"
+        },                {
+            "fqsen": "\\Core\\Utils\\ResponseConvertors\\ResponseObjectConvertor\u003A\u003AconvertCsvToObject\u0028\u0029",
+            "name": "convertCsvToObject",
+            "summary": "",
+            "url": "classes/Core-Utils-ResponseConvertors-ResponseObjectConvertor.html#method_convertCsvToObject"
+        },                {
+            "fqsen": "\\Core\\Utils\\ResponseConvertors\\ResponseObjectConvertor\u003A\u003A\u0024response",
             "name": "response",
             "summary": "",
-            "url": "classes/Core-Utils-ResponseConvertors-ResponseJsonObjectConvertor.html#property_response"
+            "url": "classes/Core-Utils-ResponseConvertors-ResponseObjectConvertor.html#property_response"
         },                {
             "fqsen": "\\",
             "name": "\\",

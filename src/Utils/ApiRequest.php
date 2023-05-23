@@ -171,9 +171,6 @@ class ApiRequest implements ApiRequestInterface
     {
         $response = $this->request($method, $data, $headers);
         $currentConvertor = $convertor ?? $this->convertor;
-        if ($currentConvertor === null) {
-            throw new InvalidArgumentException('Please set default convertor');
-        }
         return new ResponseConvertorFactory($response, $currentConvertor);
     }
 

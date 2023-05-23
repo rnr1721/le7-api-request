@@ -10,6 +10,12 @@ It includes a factory class for creating instances of the API request utility.
 ## What it can?
 
 - Create requests using any API, creating GET, POST, PUT, DELETE requests
+- Allow to get ResponseInterface, array or object from response
+- Built-in converters of JSON, XML and CSV responses to object or array
+- Allow to create own converters from ResponseInterface to your data
+- Allow pre-define settings for run using DI containers
+- Using different httpClients (ClientInterface), swithcing between them
+- Full PSR compatible
 
 ## Requirements
 
@@ -152,6 +158,8 @@ interface ResponseConvertorInterface
 }
 ```
 
+As examples you can see ResponseArrayConverter and ResponseObjectConverter
+
 Also, you can inject convertor when create ApiRequest instance:
 
 ```php
@@ -171,7 +179,8 @@ But you can use another way:
 
 ```php
 $response = $apiRequest->setUri('https://example.com/api')->request('PUT', $data, $headers);
-$convertor = new ResponseJsonArrayConvertor($response);
+// $convertor = new ResponseObjectConvertor($response);
+$convertor = new ResponseArrayConvertor($response);
 $result = $convertor->get($response); // We will get array if response correct
 ```
 
@@ -223,4 +232,47 @@ $result = $apiRequest->setUri('/contacts/get')->get();
 
 ```php
 $apiRequest->setUriPrefix('https://example.com');
+```
+
+## Container configuration
+
+In this example I using these components, but you can use any others:
+
+- Tobias Nyholm PSR-message realisation https://github.com/Nyholm/psr7
+- PHP-Di dependency injection container https://php-di.org/
+- My realisation of ClientInterface https://github.com/rnr1721/le7-http-client
+
+```php
+<?php
+
+use Core\Interfaces\ApiRequestInterface;
+use Nyholm\Psr7\Factory\Psr17Factory;
+use Core\Factories\HttpClientFactory;
+use Core\Interfaces\HttpClientFactoryInterface;
+use Psr\Http\Client\ClientInterface;
+use Psr\Container\ContainerInterface;
+use function DI\factory;
+
+return [
+    ApiRequestInterface::class => factory(function (ContainerInterface $c) {
+        /** @var HttpClientFactoryInterface $factory */
+        $factory = $c->get(HttpClientFactoryInterface::class);
+        return $factory->getApiRequest('https://example.com/api');
+    }),
+    HttpClientFactoryInterface::class => factory(function (ContainerInterface $c) {
+        /** @var Psr17Factory $psr17factory */
+        $psr17factory = $c->get(Psr17Factory::class);
+        return new HttpClientFactory(
+        $psr17factory,
+        $psr17factory,
+        $psr17factory,
+        $c->get(ClientInterface::class)
+        );
+    }),
+    ClientInterface::class => factory(function (ContainerInterface $c) {
+        /** @var Psr17Factory $psr17factory */
+        $psr17factory = $c->get(Psr17Factory::class);
+        return new \Core\HttpClient\HttpClientCurl($psr17factory);
+    })
+];
 ```
