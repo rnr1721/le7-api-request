@@ -270,7 +270,7 @@ class ApiRequest implements ApiRequestInterface
 
         $fullUrl = $this->uriPrefix . $currentUrl;
 
-        if (!filter_var($fullUrl, FILTER_VALIDATE_URL)) {
+        if (!filter_var($fullUrl, FILTER_VALIDATE_URL) || empty($fullUrl)) {
             throw new InvalidArgumentException('Invalid URL format:' . ' ' . $fullUrl);
         }
 
