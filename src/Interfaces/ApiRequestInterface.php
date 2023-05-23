@@ -85,7 +85,7 @@ interface ApiRequestInterface
      * @param string|null $url The URI.
      * @return self
      */
-    public function setUri(?string $url): self;
+    public function setUri(?string $url = null): self;
 
     /**
      * Set URI prefix for all URI

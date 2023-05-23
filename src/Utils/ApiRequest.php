@@ -259,15 +259,22 @@ class ApiRequest implements ApiRequestInterface
     /**
      * @inheritDoc
      */
-    public function setUri(?string $url): self
+    public function setUri(?string $url = null): self
     {
-        if ($url === null) {
+
+        if ($url === null && $this->uriPrefix === '') {
             throw new InvalidArgumentException('Empty URl');
-        } elseif (!filter_var($url, FILTER_VALIDATE_URL)) {
-            throw new InvalidArgumentException('Invalid URL format');
         }
 
-        $this->uri = $this->uriFactory->createUri($this->uriPrefix . $url);
+        $currentUrl = $url ?? '';
+
+        $fullUrl = $this->uriPrefix . $currentUrl;
+
+        if (!filter_var($fullUrl, FILTER_VALIDATE_URL)) {
+            throw new InvalidArgumentException('Invalid URL format:' . ' ' . $fullUrl);
+        }
+
+        $this->uri = $this->uriFactory->createUri($fullUrl);
         return $this;
     }
 
