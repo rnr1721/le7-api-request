@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Core\Interfaces;
 
 use Core\Interfaces\ResponseConvertorInterface;
-use Core\Interfaces\ResponseConvertorFactoryInterface;
+use Core\Interfaces\ResponseConvertorDataInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Client\ClientInterface;
 
@@ -22,62 +22,63 @@ interface ApiRequestInterface
      *
      * @param array|null $data The request data.
      * @param array $headers The request headers.
-     * @return ResponseInterface The API response.
+     * @return ResponseConvertorDataInterface The API response.
      */
-    public function get(?array $data = null, array $headers = []): ResponseInterface;
+    public function get(?array $data = null, array $headers = []): ResponseConvertorDataInterface;
 
     /**
      * Perform a POST request.
      *
      * @param array|null $data The request data.
      * @param array $headers The request headers.
-     * @return ResponseInterface The API response.
+     * @return ResponseConvertorDataInterface The API response.
      */
-    public function post(?array $data = null, array $headers = []): ResponseInterface;
+    public function post(?array $data = null, array $headers = []): ResponseConvertorDataInterface;
 
     /**
      * Perform a PUT request.
      *
      * @param array|null $data The request data.
      * @param array $headers The request headers.
-     * @return ResponseInterface The API response.
+     * @return ResponseConvertorDataInterface The API response.
      */
-    public function put(?array $data = null, array $headers = []): ResponseInterface;
+    public function put(?array $data = null, array $headers = []): ResponseConvertorDataInterface;
 
     /**
      * Perform a DELETE request.
      *
      * @param array|null $data The request data.
      * @param array $headers The request headers.
-     * @return ResponseInterface The API response.
+     * @return ResponseConvertorDataInterface The API response.
      */
-    public function delete(?array $data = null, array $headers = []): ResponseInterface;
+    public function delete(?array $data = null, array $headers = []): ResponseConvertorDataInterface;
 
     /**
      * Get convertor factory to easy convert to some format
+     * and make request
      * 
      * @param string $method
      * @param array|null $data
      * @param array $headers
      * @param ResponseConvertorInterface $convertor
-     * @return ResponseConvertorFactoryInterface
+     * @return ResponseConvertorDataInterface
      */
-    public function convert(
+    public function request(
             string $method,
             ?array $data = null,
             array $headers = [],
             ResponseConvertorInterface $convertor = null
-    ): ResponseConvertorFactoryInterface;
+    ): ResponseConvertorDataInterface;
 
     /**
-     * Perform a custom request.
+     * Perform a custom request and get response.
      *
      * @param string $method The request method.
      * @param array|null $data The request data.
      * @param array $headers The request headers.
      * @return ResponseInterface The API response.
      */
-    public function request(string $method, ?array $data = null, array $headers = []): ResponseInterface;
+    public function getResponse(string $method, ?array $data = null, array $headers = []): ResponseInterface;
 
     /**
      * Set the URI for the request.

@@ -19,9 +19,9 @@ class ResponseConvertorFactory implements ResponseConvertorFactoryInterface
 
     /**
      * PSR response
-     * @var ResponseInterface
+     * @var ResponseInterface|null
      */
-    protected ResponseInterface $response;
+    protected ?ResponseInterface $response = null;
 
     /**
      * Response converter if exists
@@ -30,7 +30,7 @@ class ResponseConvertorFactory implements ResponseConvertorFactoryInterface
     protected ?ResponseConvertorInterface $convertor = null;
 
     public function __construct(
-            ResponseInterface $response,
+            ?ResponseInterface $response = null,
             ?ResponseConvertorInterface $convertor = null
     )
     {
@@ -41,33 +41,33 @@ class ResponseConvertorFactory implements ResponseConvertorFactoryInterface
     /**
      * @inheritDoc
      */
-    public function toArray(
+    public function arrayConvertor(
             ?ResponseInterface $response = null
     ): ResponseArrayConvertor
     {
-        return new ResponseArrayConvertor($response ?? $this->response);
+        return new ResponseArrayConvertor($this->getResponse($response));
     }
 
     /**
      * @inheritDoc
      */
-    public function toObject(
+    public function objectConvertor(
             ?ResponseInterface $response = null
     ): ResponseObjectConvertor
     {
-        return new ResponseObjectConvertor($response ?? $this->response);
+        return new ResponseObjectConvertor($this->getResponse($response));
     }
 
     /**
      * @inheritDoc
-     * @throws InvalidArgumentException
      */
-    public function get(): mixed
+    public function getResponse(?ResponseInterface $response = null): ResponseInterface
     {
-        if ($this->convertor === null) {
-            throw new InvalidArgumentException("You must set default converter");
+        $currentResponse = $response ?? $this->response;
+        if ($currentResponse === null) {
+            throw new InvalidArgumentException('You must set ResponseInterface');
         }
-        return $this->convertor->get($this->response);
+        return $currentResponse;
     }
 
 }

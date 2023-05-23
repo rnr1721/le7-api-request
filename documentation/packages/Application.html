@@ -60,6 +60,10 @@
 </h4>
     <ul class="phpdocumentor-list">
                     <li>
+                <a href="namespaces/core-exceptions.html" class="">Exceptions</a>
+                
+            </li>
+                    <li>
                 <a href="namespaces/core-factories.html" class="">Factories</a>
                 
             </li>
@@ -116,9 +120,12 @@
         <dd>Main factory for creating ready-for-use
 ClientInterface and ApiRequestInterface</dd>
             <dt class="phpdocumentor-table-of-contents__entry -interface"><a href="classes/Core-Interfaces-ResponseConvertorFactoryInterface.html"><abbr title="\Core\Interfaces\ResponseConvertorFactoryInterface">ResponseConvertorFactoryInterface</abbr></a></dt>
-        <dd>Factory for get converters</dd>
+        <dd>Factory for get ResponseInterface converters to different formats</dd>
             <dt class="phpdocumentor-table-of-contents__entry -interface"><a href="classes/Core-Interfaces-ResponseConvertorInterface.html"><abbr title="\Core\Interfaces\ResponseConvertorInterface">ResponseConvertorInterface</abbr></a></dt>
-        <dd></dd>
+        <dd>Convertor, that converts data from ResponseInterface to some
+format, detecting by Content-Type header</dd>
+            <dt class="phpdocumentor-table-of-contents__entry -interface"><a href="classes/Core-Interfaces-ResponseConvertorDataInterface.html"><abbr title="\Core\Interfaces\ResponseConvertorDataInterface">ResponseConvertorDataInterface</abbr></a></dt>
+        <dd>Interface for get data from response</dd>
     
             <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/Core-Factories-HttpClientFactory.html"><abbr title="\Core\Factories\HttpClientFactory">HttpClientFactory</abbr></a></dt>
         <dd>Factory for creating instances of ApiRequestInterface.</dd>
@@ -127,14 +134,21 @@ ClientInterface and ApiRequestInterface</dd>
             <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/Core-Utils-ApiRequest.html"><abbr title="\Core\Utils\ApiRequest">ApiRequest</abbr></a></dt>
         <dd>Class ApiRequest</dd>
             <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/Core-Utils-ResponseConvertors-ResponseArrayConvertor.html"><abbr title="\Core\Utils\ResponseConvertors\ResponseArrayConvertor">ResponseArrayConvertor</abbr></a></dt>
-        <dd></dd>
+        <dd>ResponseArrayConvertor is a class that implements the ResponseConvertorInterface
+and provides methods to convert response bodies to an array format.</dd>
             <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/Core-Utils-ResponseConvertors-ResponseObjectConvertor.html"><abbr title="\Core\Utils\ResponseConvertors\ResponseObjectConvertor">ResponseObjectConvertor</abbr></a></dt>
+        <dd>ResponseObjectConvertor is a response convertor class that converts
+response bodies to objects.</dd>
+            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/Core-Factories-ResponseConvertorData.html"><abbr title="\Core\Factories\ResponseConvertorData">ResponseConvertorData</abbr></a></dt>
+        <dd>Class for get converted response data</dd>
+            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/Core-Exceptions-RequestException.html"><abbr title="\Core\Exceptions\RequestException">RequestException</abbr></a></dt>
         <dd></dd>
     
             <dt class="phpdocumentor-table-of-contents__entry -trait"><a href="classes/Core-Utils-MultipartFormdataTrait.html"><abbr title="\Core\Utils\MultipartFormdataTrait">MultipartFormdataTrait</abbr></a></dt>
-        <dd></dd>
+        <dd>Trait for processing multipart/form-data</dd>
             <dt class="phpdocumentor-table-of-contents__entry -trait"><a href="classes/Core-Utils-ResponseConvertors-ResponseConverterTrait.html"><abbr title="\Core\Utils\ResponseConvertors\ResponseConverterTrait">ResponseConverterTrait</abbr></a></dt>
-        <dd></dd>
+        <dd>ResponseConverterTrait provides common methods for converting response
+bodies to different formats.</dd>
     
     </dl>
 

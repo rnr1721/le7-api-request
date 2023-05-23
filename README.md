@@ -70,24 +70,26 @@ $headers = [
 ];
 
 // Get ResponseInterface for POST request
-$apiRequest->setUri('https://example.com/api')->post($data, $headers);
+$apiRequest->setUri('https://example.com/api')->post($data, $headers)->getResponse();
 
-// Get ResponseInterface for GET request
-$apiRequest->setUri('https://example.com/api')->get();
+// Get array for GET request
+$apiRequest->setUri('https://example.com/api')->get()->toArray();
 
-// Get ResponseInterface for PUT request
-$apiRequest->setUri('https://example.com/api')->put();
+// Get object for PUT request
+$apiRequest->setUri('https://example.com/api')->put()->toObject();
 
 // Get ResponseInterface for PUT request
 // You can use request() method for any request
-$apiRequest->setUri('https://example.com/api')->request('PUT');
+$apiRequest->setUri('https://example.com/api')->request('PUT')->getResponse();
 
 // Get array from response
-$apiRequest->setUri('https://example.com')->convert('POST', $data, $headers)->toArray();
+$apiRequest->setUri('https://example.com')->request('POST', $data, $headers)->toArray();
 
 // Get object from response
-$apiRequest->setUri('https://example.com')->convert('POST', $data, $headers)->toObject();
+$apiRequest->setUri('https://example.com')->request('POST', $data, $headers)->toObject();
 
+// This will return ResponseInterface
+$apiRequest->setUri('https://example.com')->getResponse('POST', $data, $headers);
 ```
 
 ## Headers
@@ -139,7 +141,7 @@ like this:
 
 ```php
 // Get array from response
-$apiRequest->setUri('https://example.com')->convert('POST', $data, $headers)->toArray();
+$apiRequest->setUri('https://example.com')->request('POST', $data, $headers)->toArray();
 ```
 
 Also, you can write own convertor. It must implement ResponseConvertorInterface:
@@ -173,15 +175,6 @@ $factory = new HttpClientFactory(
 // $convertor is ResponseConvertor instance
 $apiRequest = $factory->getApiRequest(null, $convertor);
 
-```
-
-But you can use another way:
-
-```php
-$response = $apiRequest->setUri('https://example.com/api')->request('PUT', $data, $headers);
-// $convertor = new ResponseObjectConvertor($response);
-$convertor = new ResponseArrayConvertor($response);
-$result = $convertor->get($response); // We will get array if response correct
 ```
 
 ## Multiple HTTP clients

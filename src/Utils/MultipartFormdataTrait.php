@@ -16,6 +16,9 @@ use function uniqid,
              mime_content_type;
 use const FILEINFO_MIME_TYPE;
 
+/**
+ * Trait for processing multipart/form-data
+ */
 trait MultipartFormdataTrait
 {
 

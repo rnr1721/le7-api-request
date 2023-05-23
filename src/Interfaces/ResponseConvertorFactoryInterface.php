@@ -9,35 +9,38 @@ use Core\Utils\ResponseConvertors\ResponseObjectConvertor;
 use Psr\Http\Message\ResponseInterface;
 
 /**
- * Factory for get converters
+ * Factory for get ResponseInterface converters to different formats
  */
 interface ResponseConvertorFactoryInterface
 {
 
     /**
-     * Get converter to array
+     * Get ResponseInterface converter to array
      * 
      * @param ResponseInterface|null $response
      * @return ResponseArrayConvertor
      */
-    public function toArray(
+    public function arrayConvertor(
             ?ResponseInterface $response = null
     ): ResponseArrayConvertor;
 
     /**
-     * Get converter to object
+     * Get ResponseInterface converter to object
      * 
      * @param ResponseInterface|null $response
      * @return ResponseObjectConvertor
      */
-    public function toObject(
+    public function objectConvertor(
             ?ResponseInterface $response = null
     ): ResponseObjectConvertor;
 
     /**
-     * Get data from default converter
+     * Get current ResponseInterface
      * 
-     * @return mixed
+     * @param ResponseInterface|null $response
+     * @return ResponseInterface
      */
-    public function get(): mixed;
+    public function getResponse(
+            ?ResponseInterface $response = null
+    ): ResponseInterface;
 }

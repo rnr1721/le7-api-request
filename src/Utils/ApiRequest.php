@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Core\Utils;
 
 use Core\Interfaces\ResponseConvertorInterface;
-use Core\Interfaces\ResponseConvertorFactoryInterface;
-use Core\Factories\ResponseConvertorFactory;
+use Core\Interfaces\ResponseConvertorDataInterface;
+use Core\Factories\ResponseConvertorData;
 use Core\Interfaces\ApiRequestInterface;
 use Psr\Http\Message\UriInterface;
 use Psr\Http\Client\ClientInterface;
@@ -14,7 +14,7 @@ use Psr\Http\Message\RequestFactoryInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\StreamFactoryInterface;
 use Psr\Http\Message\UriFactoryInterface;
-use Http\Client\Exception\RequestException;
+use Core\Exceptions\RequestException;
 use \InvalidArgumentException;
 use function http_build_query,
              filter_var,
@@ -130,7 +130,7 @@ class ApiRequest implements ApiRequestInterface
     /**
      * @inheritDoc
      */
-    public function get(?array $data = null, array $headers = []): ResponseInterface
+    public function get(?array $data = null, array $headers = []): ResponseConvertorDataInterface
     {
         return $this->request('GET', $data, $headers);
     }
@@ -138,7 +138,7 @@ class ApiRequest implements ApiRequestInterface
     /**
      * @inheritDoc
      */
-    public function post(?array $data = null, array $headers = []): ResponseInterface
+    public function post(?array $data = null, array $headers = []): ResponseConvertorDataInterface
     {
         return $this->request('POST', $data, $headers);
     }
@@ -146,7 +146,7 @@ class ApiRequest implements ApiRequestInterface
     /**
      * @inheritDoc
      */
-    public function put(?array $data = null, array $headers = []): ResponseInterface
+    public function put(?array $data = null, array $headers = []): ResponseConvertorDataInterface
     {
         return $this->request('PUT', $data, $headers);
     }
@@ -154,7 +154,7 @@ class ApiRequest implements ApiRequestInterface
     /**
      * @inheritDoc
      */
-    public function delete(?array $data = null, array $headers = []): ResponseInterface
+    public function delete(?array $data = null, array $headers = []): ResponseConvertorDataInterface
     {
         return $this->request('DELETE', $data, $headers);
     }
@@ -162,22 +162,22 @@ class ApiRequest implements ApiRequestInterface
     /**
      * @inheritDoc
      */
-    public function convert(
+    public function request(
             string $method,
             ?array $data = null,
             array $headers = [],
             ?ResponseConvertorInterface $convertor = null
-    ): ResponseConvertorFactoryInterface
+    ): ResponseConvertorDataInterface
     {
-        $response = $this->request($method, $data, $headers);
+        $response = $this->getResponse($method, $data, $headers);
         $currentConvertor = $convertor ?? $this->convertor;
-        return new ResponseConvertorFactory($response, $currentConvertor);
+        return new ResponseConvertorData($response, $currentConvertor);
     }
 
     /**
      * @inheritDoc
      */
-    public function request(
+    public function getResponse(
             string $method,
             ?array $data = null,
             array $headers = []
@@ -235,18 +235,21 @@ class ApiRequest implements ApiRequestInterface
             $request = $request->withHeader($name, $value);
         }
 
-        // If fake response exists, we return fake response
-        if ($this->fakeResponse) {
-            return $this->fakeResponse;
-        }
 
-        // Get response from HttpClient
-        $httpClient = $this->getCurrentHttpClient();
-        $response = $httpClient->sendRequest($request);
+        if ($this->fakeResponse === null) {
+            // Get response from real HttpClient
+            $httpClient = $this->getCurrentHttpClient();
+            $response = $httpClient->sendRequest($request);
+        } else {
+            // If fake response exists
+            $response = $this->fakeResponse;
+        }
 
         // Get status code
         $statusCode = $response->getStatusCode();
-        if ($statusCode < 200 || $statusCode >= 300) {
+        if ($statusCode === 404) {
+            throw new RequestException('Not found: ' . $statusCode, $request);
+        } elseif ($statusCode < 200 || $statusCode >= 300) {
             throw new RequestException('Request failed with status code: ' . $statusCode, $request);
         }
 
