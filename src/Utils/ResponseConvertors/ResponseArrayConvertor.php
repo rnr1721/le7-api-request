@@ -68,7 +68,7 @@ class ResponseArrayConvertor implements ResponseConvertorInterface
 
         if ($contentType === 'application/json') {
             return $this->convertJsonToArray($body);
-        } elseif ($contentType === 'application/xml') {
+        } elseif ($contentType === 'application/xml' || $contentType === 'text/xml') {
             return $this->convertXmlToArray($body);
         } elseif ($contentType === 'text/csv') {
             return $this->convertCsvToArray($body);
@@ -129,19 +129,23 @@ class ResponseArrayConvertor implements ResponseConvertorInterface
     {
         $result = [];
 
-        $children = $xml->children() ?? [];
+        $children = $xml->children();
 
-        foreach ($children as $name => $element) {
-            $data = $this->normalizeXmlToArray($element);
-
-            if (isset($result[$name])) {
-                //if (!is_array($result[$name])) {
-                $result[$name] = [$result[$name]];
-                //}
-                $result[$name][] = $data;
-            } else {
-                $result[$name] = $data;
+        if (!empty($children)) {
+            foreach ($children as $name => $element) {
+                $data = $this->normalizeXmlToArray($element);
+                /** @var array<array-key, mixed>|array<array-key, mixed>[] $result */
+                if (isset($result[$name])) {
+                    if (!is_array($result[$name])) {
+                        $result[$name] = [$result[$name]];
+                    }
+                    $result[$name][] = $data;
+                } else {
+                    $result[$name] = $data;
+                }
             }
+        } else {
+            $result[$xml->getName()] = (string) $xml;
         }
 
         return $result;

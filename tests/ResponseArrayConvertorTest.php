@@ -25,7 +25,9 @@ class ResponseArrayConvertorTest extends TestCase
         $result = $convertor->convertXmlToArray($xml);
 
         $expectedResult = [
-            'key' => []
+            'key' => [
+                'key' => 'value'
+            ]
         ];
 
         $this->assertIsArray($result);

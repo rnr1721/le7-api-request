@@ -59,7 +59,7 @@ class ResponseObjectConvertor implements ResponseConvertorInterface
 
         if ($contentType === 'application/json') {
             return $this->convertJsonToObject($body);
-        } elseif ($contentType === 'application/xml') {
+        } elseif ($contentType === 'application/xml' || $contentType === 'text/xml') {
             return $this->convertXmlToObject($body);
         } elseif ($contentType === 'text/csv') {
             return $this->convertCsvToObject($body);
