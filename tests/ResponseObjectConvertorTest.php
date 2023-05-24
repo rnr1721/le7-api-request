@@ -2,6 +2,7 @@
 
 use Core\Utils\ResponseConvertors\ResponseObjectConvertor;
 use PHPUnit\Framework\TestCase;
+use Core\Exceptions\ResponseConvertorException;
 
 class ResponseObjectConvertorTest extends TestCase
 {
@@ -23,7 +24,7 @@ class ResponseObjectConvertorTest extends TestCase
         $convertor = new ResponseObjectConvertor();
         $invalidJson = '{"name": "John", "age": 30,}';
 
-        $this->expectException(RuntimeException::class);
+        $this->expectException(ResponseConvertorException::class);
         $this->expectExceptionMessage('Failed to decode JSON');
 
         $convertor->convertJsonToObject($invalidJson);
@@ -46,7 +47,7 @@ class ResponseObjectConvertorTest extends TestCase
         $convertor = new ResponseObjectConvertor();
         $invalidXml = '<?xml version="1.0" encoding="UTF-8"?><root><name>John</name><age>30</age>';
 
-        $this->expectException(RuntimeException::class);
+        $this->expectException(ResponseConvertorException::class);
         $this->expectExceptionMessage('Failed to parse XML');
 
         $convertor->convertXmlToObject($invalidXml);

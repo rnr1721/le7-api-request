@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace Core\Factories;
 
-use Psr\Http\Message\ResponseInterface;
 use Core\Interfaces\ResponseConvertorInterface;
 use Core\Interfaces\ResponseConvertorDataInterface;
 use Core\Utils\ResponseConvertors\ResponseArrayConvertor;
 use Core\Utils\ResponseConvertors\ResponseObjectConvertor;
-use \InvalidArgumentException;
+use Core\Exceptions\ApiRequestException;
+use Psr\Http\Message\ResponseInterface;
 
 /**
  * Class for get converted response data
@@ -58,16 +58,19 @@ class ResponseConvertorData implements ResponseConvertorDataInterface
 
     /**
      * @inheritDoc
-     * @throws InvalidArgumentException
+     * @throws ApiRequestException
      */
     public function ownFormat(): mixed
     {
         if ($this->convertor === null) {
-            throw new InvalidArgumentException("You must set default converter");
+            throw new ApiRequestException("You must set default converter");
         }
         return $this->convertor->get($this->response);
     }
 
+    /**
+     * @inheritDoc
+     */
     public function getResponse(): ResponseInterface
     {
         return $this->response;

@@ -1,9 +1,5 @@
 <?php
 
-use Core\Interfaces\ResponseConvertorDataInterface;
-use Core\Interfaces\ResponseConvertorInterface;
-use Psr\Http\Message\UriInterface;
-use Psr\Http\Message\RequestInterface;
 use Core\Utils\ApiRequest;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Client\ClientInterface;

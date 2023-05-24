@@ -6,9 +6,9 @@ namespace Core\Utils\ResponseConvertors;
 
 use Core\Interfaces\ResponseConvertorInterface;
 use Psr\Http\Message\ResponseInterface;
+use Core\Exceptions\ResponseConvertorException;
 use \stdClass;
 use \SimpleXMLElement;
-use \RuntimeException;
 
 /**
  * ResponseObjectConvertor is a response convertor class that converts
@@ -41,7 +41,7 @@ class ResponseObjectConvertor implements ResponseConvertorInterface
      *
      * @param ResponseInterface|null $response The response object to be converted (optional).
      * @return object The converted response body as an object.
-     * @throws RuntimeException If the response is empty or if the data format is unsupported.
+     * @throws ResponseConvertorException If the response is empty or if the data format is unsupported.
      */
     public function get(?ResponseInterface $response = null): object
     {
@@ -50,7 +50,7 @@ class ResponseObjectConvertor implements ResponseConvertorInterface
         }
 
         if (empty($this->response)) {
-            throw new RuntimeException('Response is empty');
+            throw new ResponseConvertorException('Response is empty');
         }
 
         $contentType = $this->getContentType($this->response);
@@ -64,7 +64,7 @@ class ResponseObjectConvertor implements ResponseConvertorInterface
         } elseif ($contentType === 'text/csv') {
             return $this->convertCsvToObject($body);
         } else {
-            throw new RuntimeException('Unsupported data format: ' . $contentType ?? 'Not defined');
+            throw new ResponseConvertorException('Unsupported data format: ' . $contentType ?? 'Not defined');
         }
     }
 
@@ -73,7 +73,7 @@ class ResponseObjectConvertor implements ResponseConvertorInterface
      *
      * @param string $body The JSON string.
      * @return object The converted object.
-     * @throws RuntimeException If the JSON decoding fails.
+     * @throws ResponseConvertorException If the JSON decoding fails.
      */
     public function convertJsonToObject(string $body): object
     {
@@ -81,7 +81,7 @@ class ResponseObjectConvertor implements ResponseConvertorInterface
         $data = json_decode($body);
 
         if (json_last_error() !== JSON_ERROR_NONE) {
-            throw new RuntimeException('Failed to decode JSON: ' . json_last_error_msg());
+            throw new ResponseConvertorException('Failed to decode JSON: ' . json_last_error_msg());
         }
 
         return $data;
@@ -92,7 +92,7 @@ class ResponseObjectConvertor implements ResponseConvertorInterface
      *
      * @param string $body The XML string.
      * @return object The converted object.
-     * @throws RuntimeException If the XML parsing fails.
+     * @throws ResponseConvertorException If the XML parsing fails.
      */
     public function convertXmlToObject(string $body): object
     {
@@ -102,7 +102,7 @@ class ResponseObjectConvertor implements ResponseConvertorInterface
         if ($xml === false) {
             $errors = libxml_get_errors();
             libxml_clear_errors();
-            throw new RuntimeException('Failed to parse XML: ' . $this->formatXmlErrors($errors));
+            throw new ResponseConvertorException('Failed to parse XML: ' . $this->formatXmlErrors($errors));
         }
 
         $data = $this->normalizeXmlToObject($xml);

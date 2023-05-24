@@ -1,6 +1,126 @@
 Search.appendIndex(
     [
                 {
+            "fqsen": "\\Core\\Events\\AfterApiRequestEvent",
+            "name": "AfterApiRequestEvent",
+            "summary": "",
+            "url": "classes/Core-Events-AfterApiRequestEvent.html"
+        },                {
+            "fqsen": "\\Core\\Events\\AfterApiRequestEvent\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "Create\u0020a\u0020new\u0020AfterApiRequestEvent\u0020instance.",
+            "url": "classes/Core-Events-AfterApiRequestEvent.html#method___construct"
+        },                {
+            "fqsen": "\\Core\\Events\\AfterApiRequestEvent\u003A\u003AisPropagationStopped\u0028\u0029",
+            "name": "isPropagationStopped",
+            "summary": "Determine\u0020if\u0020event\u0020propagation\u0020has\u0020been\u0020stopped.",
+            "url": "classes/Core-Events-AfterApiRequestEvent.html#method_isPropagationStopped"
+        },                {
+            "fqsen": "\\Core\\Events\\AfterApiRequestEvent\u003A\u003AstopPropagation\u0028\u0029",
+            "name": "stopPropagation",
+            "summary": "Stop\u0020the\u0020propagation\u0020of\u0020the\u0020event.",
+            "url": "classes/Core-Events-AfterApiRequestEvent.html#method_stopPropagation"
+        },                {
+            "fqsen": "\\Core\\Events\\AfterApiRequestEvent\u003A\u003AgetRequest\u0028\u0029",
+            "name": "getRequest",
+            "summary": "Get\u0020the\u0020API\u0020request\u0020that\u0020send.",
+            "url": "classes/Core-Events-AfterApiRequestEvent.html#method_getRequest"
+        },                {
+            "fqsen": "\\Core\\Events\\AfterApiRequestEvent\u003A\u003AgetResponse\u0028\u0029",
+            "name": "getResponse",
+            "summary": "Get\u0020the\u0020response\u0020received\u0020from\u0020the\u0020API\u0020request.",
+            "url": "classes/Core-Events-AfterApiRequestEvent.html#method_getResponse"
+        },                {
+            "fqsen": "\\Core\\Events\\AfterApiRequestEvent\u003A\u003AsetResponse\u0028\u0029",
+            "name": "setResponse",
+            "summary": "Set\u0020the\u0020response\u0020received\u0020from\u0020the\u0020API\u0020request.",
+            "url": "classes/Core-Events-AfterApiRequestEvent.html#method_setResponse"
+        },                {
+            "fqsen": "\\Core\\Events\\AfterApiRequestEvent\u003A\u003AgetMethod\u0028\u0029",
+            "name": "getMethod",
+            "summary": "Get\u0020the\u0020HTTP\u0020method\u0020used\u0020for\u0020the\u0020API\u0020request.",
+            "url": "classes/Core-Events-AfterApiRequestEvent.html#method_getMethod"
+        },                {
+            "fqsen": "\\Core\\Events\\AfterApiRequestEvent\u003A\u003AgetUri\u0028\u0029",
+            "name": "getUri",
+            "summary": "Get\u0020the\u0020URI\u0020of\u0020the\u0020API\u0020request.",
+            "url": "classes/Core-Events-AfterApiRequestEvent.html#method_getUri"
+        },                {
+            "fqsen": "\\Core\\Events\\AfterApiRequestEvent\u003A\u003AgetData\u0028\u0029",
+            "name": "getData",
+            "summary": "Get\u0020the\u0020data\u0020sent\u0020with\u0020the\u0020API\u0020request.",
+            "url": "classes/Core-Events-AfterApiRequestEvent.html#method_getData"
+        },                {
+            "fqsen": "\\Core\\Events\\AfterApiRequestEvent\u003A\u003AgetHeaders\u0028\u0029",
+            "name": "getHeaders",
+            "summary": "Get\u0020the\u0020headers\u0020sent\u0020with\u0020the\u0020API\u0020request.",
+            "url": "classes/Core-Events-AfterApiRequestEvent.html#method_getHeaders"
+        },                {
+            "fqsen": "\\Core\\Events\\AfterApiRequestEvent\u003A\u003A\u0024propagationStopped",
+            "name": "propagationStopped",
+            "summary": "",
+            "url": "classes/Core-Events-AfterApiRequestEvent.html#property_propagationStopped"
+        },                {
+            "fqsen": "\\Core\\Events\\AfterApiRequestEvent\u003A\u003A\u0024request",
+            "name": "request",
+            "summary": "",
+            "url": "classes/Core-Events-AfterApiRequestEvent.html#property_request"
+        },                {
+            "fqsen": "\\Core\\Events\\AfterApiRequestEvent\u003A\u003A\u0024response",
+            "name": "response",
+            "summary": "",
+            "url": "classes/Core-Events-AfterApiRequestEvent.html#property_response"
+        },                {
+            "fqsen": "\\Core\\Events\\AfterApiRequestEvent\u003A\u003A\u0024method",
+            "name": "method",
+            "summary": "",
+            "url": "classes/Core-Events-AfterApiRequestEvent.html#property_method"
+        },                {
+            "fqsen": "\\Core\\Events\\AfterApiRequestEvent\u003A\u003A\u0024uri",
+            "name": "uri",
+            "summary": "",
+            "url": "classes/Core-Events-AfterApiRequestEvent.html#property_uri"
+        },                {
+            "fqsen": "\\Core\\Events\\AfterApiRequestEvent\u003A\u003A\u0024data",
+            "name": "data",
+            "summary": "",
+            "url": "classes/Core-Events-AfterApiRequestEvent.html#property_data"
+        },                {
+            "fqsen": "\\Core\\Events\\AfterApiRequestEvent\u003A\u003A\u0024headers",
+            "name": "headers",
+            "summary": "",
+            "url": "classes/Core-Events-AfterApiRequestEvent.html#property_headers"
+        },                {
+            "fqsen": "\\Core\\Exceptions\\ApiRequestException",
+            "name": "ApiRequestException",
+            "summary": "",
+            "url": "classes/Core-Exceptions-ApiRequestException.html"
+        },                {
+            "fqsen": "\\Core\\Exceptions\\RequestException",
+            "name": "RequestException",
+            "summary": "",
+            "url": "classes/Core-Exceptions-RequestException.html"
+        },                {
+            "fqsen": "\\Core\\Exceptions\\RequestException\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "",
+            "url": "classes/Core-Exceptions-RequestException.html#method___construct"
+        },                {
+            "fqsen": "\\Core\\Exceptions\\RequestException\u003A\u003AgetRequest\u0028\u0029",
+            "name": "getRequest",
+            "summary": "",
+            "url": "classes/Core-Exceptions-RequestException.html#method_getRequest"
+        },                {
+            "fqsen": "\\Core\\Exceptions\\RequestException\u003A\u003A\u0024request",
+            "name": "request",
+            "summary": "",
+            "url": "classes/Core-Exceptions-RequestException.html#property_request"
+        },                {
+            "fqsen": "\\Core\\Exceptions\\ResponseConvertorException",
+            "name": "ResponseConvertorException",
+            "summary": "",
+            "url": "classes/Core-Exceptions-ResponseConvertorException.html"
+        },                {
             "fqsen": "\\Core\\Factories\\HttpClientFactory",
             "name": "HttpClientFactory",
             "summary": "Factory\u0020for\u0020creating\u0020instances\u0020of\u0020ApiRequestInterface.",
@@ -23,23 +143,68 @@ Search.appendIndex(
         },                {
             "fqsen": "\\Core\\Factories\\HttpClientFactory\u003A\u003A\u0024uriFactory",
             "name": "uriFactory",
-            "summary": "",
+            "summary": "PSR\u0020UriFactoryInterface\u0020implementation",
             "url": "classes/Core-Factories-HttpClientFactory.html#property_uriFactory"
         },                {
             "fqsen": "\\Core\\Factories\\HttpClientFactory\u003A\u003A\u0024requestFactory",
             "name": "requestFactory",
-            "summary": "",
+            "summary": "PSR\u0020RequestFactoryInterface\u0020implementation",
             "url": "classes/Core-Factories-HttpClientFactory.html#property_requestFactory"
         },                {
             "fqsen": "\\Core\\Factories\\HttpClientFactory\u003A\u003A\u0024streamFactory",
             "name": "streamFactory",
-            "summary": "",
+            "summary": "PSR\u0020StreamFactoryInterface\u0020implementation",
             "url": "classes/Core-Factories-HttpClientFactory.html#property_streamFactory"
         },                {
             "fqsen": "\\Core\\Factories\\HttpClientFactory\u003A\u003A\u0024httpClient",
             "name": "httpClient",
-            "summary": "",
+            "summary": "PSR\u0020ClientInterface\u0020implementation",
             "url": "classes/Core-Factories-HttpClientFactory.html#property_httpClient"
+        },                {
+            "fqsen": "\\Core\\Factories\\HttpClientFactory\u003A\u003A\u0024eventDispatcher",
+            "name": "eventDispatcher",
+            "summary": "PSR\u0020EventDispatcherInterface\u0020implementation\u0020for\u0020events",
+            "url": "classes/Core-Factories-HttpClientFactory.html#property_eventDispatcher"
+        },                {
+            "fqsen": "\\Core\\Factories\\ResponseConvertorData",
+            "name": "ResponseConvertorData",
+            "summary": "Class\u0020for\u0020get\u0020converted\u0020response\u0020data",
+            "url": "classes/Core-Factories-ResponseConvertorData.html"
+        },                {
+            "fqsen": "\\Core\\Factories\\ResponseConvertorData\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "",
+            "url": "classes/Core-Factories-ResponseConvertorData.html#method___construct"
+        },                {
+            "fqsen": "\\Core\\Factories\\ResponseConvertorData\u003A\u003AtoArray\u0028\u0029",
+            "name": "toArray",
+            "summary": "Get\u0020ResponseInterface\u0020body\u0020converted\u0020to\u0020array",
+            "url": "classes/Core-Factories-ResponseConvertorData.html#method_toArray"
+        },                {
+            "fqsen": "\\Core\\Factories\\ResponseConvertorData\u003A\u003AtoObject\u0028\u0029",
+            "name": "toObject",
+            "summary": "Get\u0020ResponseInterface\u0020body\u0020converted\u0020to\u0020object",
+            "url": "classes/Core-Factories-ResponseConvertorData.html#method_toObject"
+        },                {
+            "fqsen": "\\Core\\Factories\\ResponseConvertorData\u003A\u003AownFormat\u0028\u0029",
+            "name": "ownFormat",
+            "summary": "Get\u0020ResponseInterface\u0020body\u0020converted\u0020to\u0020own\u0020format\nfrom\u0020own\u0020implementation\u0020of\u0020ResponseConverterInterface",
+            "url": "classes/Core-Factories-ResponseConvertorData.html#method_ownFormat"
+        },                {
+            "fqsen": "\\Core\\Factories\\ResponseConvertorData\u003A\u003AgetResponse\u0028\u0029",
+            "name": "getResponse",
+            "summary": "Get\u0020ResponseInterface\u0020object",
+            "url": "classes/Core-Factories-ResponseConvertorData.html#method_getResponse"
+        },                {
+            "fqsen": "\\Core\\Factories\\ResponseConvertorData\u003A\u003A\u0024response",
+            "name": "response",
+            "summary": "PSR\u0020response",
+            "url": "classes/Core-Factories-ResponseConvertorData.html#property_response"
+        },                {
+            "fqsen": "\\Core\\Factories\\ResponseConvertorData\u003A\u003A\u0024convertor",
+            "name": "convertor",
+            "summary": "Response\u0020converter\u0020if\u0020exists",
+            "url": "classes/Core-Factories-ResponseConvertorData.html#property_convertor"
         },                {
             "fqsen": "\\Core\\Factories\\ResponseConvertorFactory",
             "name": "ResponseConvertorFactory",
@@ -95,6 +260,11 @@ Search.appendIndex(
             "name": "put",
             "summary": "Perform\u0020a\u0020PUT\u0020request.",
             "url": "classes/Core-Interfaces-ApiRequestInterface.html#method_put"
+        },                {
+            "fqsen": "\\Core\\Interfaces\\ApiRequestInterface\u003A\u003Apatch\u0028\u0029",
+            "name": "patch",
+            "summary": "Perform\u0020a\u0020PATCH\u0020request.",
+            "url": "classes/Core-Interfaces-ApiRequestInterface.html#method_patch"
         },                {
             "fqsen": "\\Core\\Interfaces\\ApiRequestInterface\u003A\u003Adelete\u0028\u0029",
             "name": "delete",
@@ -186,6 +356,11 @@ Search.appendIndex(
             "summary": "Set\u0020a\u0020fake\u0020response\u0020for\u0020testing\u0020purposes.",
             "url": "classes/Core-Interfaces-ApiRequestInterface.html#method_setFakeResponse"
         },                {
+            "fqsen": "\\Core\\Interfaces\\ApiRequestInterface\u003A\u003AgetLast\u0028\u0029",
+            "name": "getLast",
+            "summary": "Get\u0020last\u0020request",
+            "url": "classes/Core-Interfaces-ApiRequestInterface.html#method_getLast"
+        },                {
             "fqsen": "\\Core\\Interfaces\\HttpClientFactoryInterface",
             "name": "HttpClientFactoryInterface",
             "summary": "Main\u0020factory\u0020for\u0020creating\u0020ready\u002Dfor\u002Duse\nClientInterface\u0020and\u0020ApiRequestInterface",
@@ -200,6 +375,31 @@ Search.appendIndex(
             "name": "getHttpClient",
             "summary": "Get\u0020an\u0020instance\u0020of\u0020the\u0020default\u0020HTTP\u0020client.",
             "url": "classes/Core-Interfaces-HttpClientFactoryInterface.html#method_getHttpClient"
+        },                {
+            "fqsen": "\\Core\\Interfaces\\ResponseConvertorDataInterface",
+            "name": "ResponseConvertorDataInterface",
+            "summary": "Interface\u0020for\u0020get\u0020data\u0020from\u0020response",
+            "url": "classes/Core-Interfaces-ResponseConvertorDataInterface.html"
+        },                {
+            "fqsen": "\\Core\\Interfaces\\ResponseConvertorDataInterface\u003A\u003AtoArray\u0028\u0029",
+            "name": "toArray",
+            "summary": "Get\u0020ResponseInterface\u0020body\u0020converted\u0020to\u0020array",
+            "url": "classes/Core-Interfaces-ResponseConvertorDataInterface.html#method_toArray"
+        },                {
+            "fqsen": "\\Core\\Interfaces\\ResponseConvertorDataInterface\u003A\u003AtoObject\u0028\u0029",
+            "name": "toObject",
+            "summary": "Get\u0020ResponseInterface\u0020body\u0020converted\u0020to\u0020object",
+            "url": "classes/Core-Interfaces-ResponseConvertorDataInterface.html#method_toObject"
+        },                {
+            "fqsen": "\\Core\\Interfaces\\ResponseConvertorDataInterface\u003A\u003AownFormat\u0028\u0029",
+            "name": "ownFormat",
+            "summary": "Get\u0020ResponseInterface\u0020body\u0020converted\u0020to\u0020own\u0020format\nfrom\u0020own\u0020implementation\u0020of\u0020ResponseConverterInterface",
+            "url": "classes/Core-Interfaces-ResponseConvertorDataInterface.html#method_ownFormat"
+        },                {
+            "fqsen": "\\Core\\Interfaces\\ResponseConvertorDataInterface\u003A\u003AgetResponse\u0028\u0029",
+            "name": "getResponse",
+            "summary": "Get\u0020ResponseInterface\u0020object",
+            "url": "classes/Core-Interfaces-ResponseConvertorDataInterface.html#method_getResponse"
         },                {
             "fqsen": "\\Core\\Interfaces\\ResponseConvertorFactoryInterface",
             "name": "ResponseConvertorFactoryInterface",
@@ -260,6 +460,11 @@ Search.appendIndex(
             "name": "delete",
             "summary": "Perform\u0020a\u0020DELETE\u0020request.",
             "url": "classes/Core-Utils-ApiRequest.html#method_delete"
+        },                {
+            "fqsen": "\\Core\\Utils\\ApiRequest\u003A\u003Apatch\u0028\u0029",
+            "name": "patch",
+            "summary": "Perform\u0020a\u0020PATCH\u0020request.",
+            "url": "classes/Core-Utils-ApiRequest.html#method_patch"
         },                {
             "fqsen": "\\Core\\Utils\\ApiRequest\u003A\u003Arequest\u0028\u0029",
             "name": "request",
@@ -341,6 +546,11 @@ Search.appendIndex(
             "summary": "Set\u0020default\u0020response\u0020convertor",
             "url": "classes/Core-Utils-ApiRequest.html#method_setDefaultConvertor"
         },                {
+            "fqsen": "\\Core\\Utils\\ApiRequest\u003A\u003AgetLast\u0028\u0029",
+            "name": "getLast",
+            "summary": "Get\u0020last\u0020request",
+            "url": "classes/Core-Utils-ApiRequest.html#method_getLast"
+        },                {
             "fqsen": "\\Core\\Utils\\ApiRequest\u003A\u003AsetFakeResponse\u0028\u0029",
             "name": "setFakeResponse",
             "summary": "Set\u0020a\u0020fake\u0020response\u0020for\u0020testing\u0020purposes.",
@@ -356,6 +566,11 @@ Search.appendIndex(
             "summary": "Default\u0020content\u0020type",
             "url": "classes/Core-Utils-ApiRequest.html#property_contentType"
         },                {
+            "fqsen": "\\Core\\Utils\\ApiRequest\u003A\u003A\u0024allowedContentTypes",
+            "name": "allowedContentTypes",
+            "summary": "Content\u0020types\u0020that\u0020allowed\u0020to\u0020send",
+            "url": "classes/Core-Utils-ApiRequest.html#property_allowedContentTypes"
+        },                {
             "fqsen": "\\Core\\Utils\\ApiRequest\u003A\u003A\u0024headers",
             "name": "headers",
             "summary": "Global\u0020headers",
@@ -370,6 +585,11 @@ Search.appendIndex(
             "name": "currentHttpClient",
             "summary": "Current\u0020key\u0020of\u0020httpClient\u0020\u0028ClientInterface\u0020object\u0029",
             "url": "classes/Core-Utils-ApiRequest.html#property_currentHttpClient"
+        },                {
+            "fqsen": "\\Core\\Utils\\ApiRequest\u003A\u003A\u0024lastResponse",
+            "name": "lastResponse",
+            "summary": "Last\u0020response\u0020if\u0020exists",
+            "url": "classes/Core-Utils-ApiRequest.html#property_lastResponse"
         },                {
             "fqsen": "\\Core\\Utils\\ApiRequest\u003A\u003A\u0024fakeResponse",
             "name": "fakeResponse",
@@ -400,6 +620,11 @@ Search.appendIndex(
             "name": "convertor",
             "summary": "Default\u0020response\u0020convertor",
             "url": "classes/Core-Utils-ApiRequest.html#property_convertor"
+        },                {
+            "fqsen": "\\Core\\Utils\\ApiRequest\u003A\u003A\u0024eventDispatcher",
+            "name": "eventDispatcher",
+            "summary": "Optionsl\u0020PSR\u0020event\u0020dispatcher",
+            "url": "classes/Core-Utils-ApiRequest.html#property_eventDispatcher"
         },                {
             "fqsen": "\\Core\\Utils\\MultipartFormdataTrait",
             "name": "MultipartFormdataTrait",
@@ -521,105 +746,25 @@ Search.appendIndex(
             "summary": "PSR\u0020Response",
             "url": "classes/Core-Utils-ResponseConvertors-ResponseObjectConvertor.html#property_response"
         },                {
-            "fqsen": "\\Core\\Factories\\ResponseConvertorData",
-            "name": "ResponseConvertorData",
-            "summary": "Class\u0020for\u0020get\u0020converted\u0020response\u0020data",
-            "url": "classes/Core-Factories-ResponseConvertorData.html"
-        },                {
-            "fqsen": "\\Core\\Factories\\ResponseConvertorData\u003A\u003A__construct\u0028\u0029",
-            "name": "__construct",
-            "summary": "",
-            "url": "classes/Core-Factories-ResponseConvertorData.html#method___construct"
-        },                {
-            "fqsen": "\\Core\\Factories\\ResponseConvertorData\u003A\u003AtoArray\u0028\u0029",
-            "name": "toArray",
-            "summary": "Get\u0020ResponseInterface\u0020body\u0020converted\u0020to\u0020array",
-            "url": "classes/Core-Factories-ResponseConvertorData.html#method_toArray"
-        },                {
-            "fqsen": "\\Core\\Factories\\ResponseConvertorData\u003A\u003AtoObject\u0028\u0029",
-            "name": "toObject",
-            "summary": "Get\u0020ResponseInterface\u0020body\u0020converted\u0020to\u0020object",
-            "url": "classes/Core-Factories-ResponseConvertorData.html#method_toObject"
-        },                {
-            "fqsen": "\\Core\\Factories\\ResponseConvertorData\u003A\u003AownFormat\u0028\u0029",
-            "name": "ownFormat",
-            "summary": "Get\u0020ResponseInterface\u0020body\u0020converted\u0020to\u0020own\u0020format\nfrom\u0020own\u0020implementation\u0020of\u0020ResponseConverterInterface",
-            "url": "classes/Core-Factories-ResponseConvertorData.html#method_ownFormat"
-        },                {
-            "fqsen": "\\Core\\Factories\\ResponseConvertorData\u003A\u003AgetResponse\u0028\u0029",
-            "name": "getResponse",
-            "summary": "Get\u0020ResponseInterface\u0020object",
-            "url": "classes/Core-Factories-ResponseConvertorData.html#method_getResponse"
-        },                {
-            "fqsen": "\\Core\\Factories\\ResponseConvertorData\u003A\u003A\u0024response",
-            "name": "response",
-            "summary": "PSR\u0020response",
-            "url": "classes/Core-Factories-ResponseConvertorData.html#property_response"
-        },                {
-            "fqsen": "\\Core\\Factories\\ResponseConvertorData\u003A\u003A\u0024convertor",
-            "name": "convertor",
-            "summary": "Response\u0020converter\u0020if\u0020exists",
-            "url": "classes/Core-Factories-ResponseConvertorData.html#property_convertor"
-        },                {
-            "fqsen": "\\Core\\Interfaces\\ResponseConvertorDataInterface",
-            "name": "ResponseConvertorDataInterface",
-            "summary": "Interface\u0020for\u0020get\u0020data\u0020from\u0020response",
-            "url": "classes/Core-Interfaces-ResponseConvertorDataInterface.html"
-        },                {
-            "fqsen": "\\Core\\Interfaces\\ResponseConvertorDataInterface\u003A\u003AtoArray\u0028\u0029",
-            "name": "toArray",
-            "summary": "Get\u0020ResponseInterface\u0020body\u0020converted\u0020to\u0020array",
-            "url": "classes/Core-Interfaces-ResponseConvertorDataInterface.html#method_toArray"
-        },                {
-            "fqsen": "\\Core\\Interfaces\\ResponseConvertorDataInterface\u003A\u003AtoObject\u0028\u0029",
-            "name": "toObject",
-            "summary": "Get\u0020ResponseInterface\u0020body\u0020converted\u0020to\u0020object",
-            "url": "classes/Core-Interfaces-ResponseConvertorDataInterface.html#method_toObject"
-        },                {
-            "fqsen": "\\Core\\Interfaces\\ResponseConvertorDataInterface\u003A\u003AownFormat\u0028\u0029",
-            "name": "ownFormat",
-            "summary": "Get\u0020ResponseInterface\u0020body\u0020converted\u0020to\u0020own\u0020format\nfrom\u0020own\u0020implementation\u0020of\u0020ResponseConverterInterface",
-            "url": "classes/Core-Interfaces-ResponseConvertorDataInterface.html#method_ownFormat"
-        },                {
-            "fqsen": "\\Core\\Interfaces\\ResponseConvertorDataInterface\u003A\u003AgetResponse\u0028\u0029",
-            "name": "getResponse",
-            "summary": "Get\u0020ResponseInterface\u0020object",
-            "url": "classes/Core-Interfaces-ResponseConvertorDataInterface.html#method_getResponse"
-        },                {
-            "fqsen": "\\Core\\Exceptions\\RequestException",
-            "name": "RequestException",
-            "summary": "",
-            "url": "classes/Core-Exceptions-RequestException.html"
-        },                {
-            "fqsen": "\\Core\\Exceptions\\RequestException\u003A\u003A__construct\u0028\u0029",
-            "name": "__construct",
-            "summary": "",
-            "url": "classes/Core-Exceptions-RequestException.html#method___construct"
-        },                {
-            "fqsen": "\\Core\\Exceptions\\RequestException\u003A\u003AgetRequest\u0028\u0029",
-            "name": "getRequest",
-            "summary": "",
-            "url": "classes/Core-Exceptions-RequestException.html#method_getRequest"
-        },                {
-            "fqsen": "\\Core\\Exceptions\\RequestException\u003A\u003A\u0024request",
-            "name": "request",
-            "summary": "",
-            "url": "classes/Core-Exceptions-RequestException.html#property_request"
-        },                {
             "fqsen": "\\",
             "name": "\\",
             "summary": "",
             "url": "namespaces/default.html"
         },                {
-            "fqsen": "\\Core\\Exceptions",
-            "name": "Exceptions",
+            "fqsen": "\\Core\\Events",
+            "name": "Events",
             "summary": "",
-            "url": "namespaces/core-exceptions.html"
+            "url": "namespaces/core-events.html"
         },                {
             "fqsen": "\\Core",
             "name": "Core",
             "summary": "",
             "url": "namespaces/core.html"
+        },                {
+            "fqsen": "\\Core\\Exceptions",
+            "name": "Exceptions",
+            "summary": "",
+            "url": "namespaces/core-exceptions.html"
         },                {
             "fqsen": "\\Core\\Factories",
             "name": "Factories",

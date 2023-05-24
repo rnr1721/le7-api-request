@@ -6,8 +6,8 @@ namespace Core\Utils\ResponseConvertors;
 
 use Core\Interfaces\ResponseConvertorInterface;
 use Psr\Http\Message\ResponseInterface;
+use Core\Exceptions\ResponseConvertorException;
 use \SimpleXMLElement;
-use \RuntimeException;
 use function json_decode,
              json_last_error,
              json_last_error_msg,
@@ -50,7 +50,7 @@ class ResponseArrayConvertor implements ResponseConvertorInterface
      *
      * @param ResponseInterface|null $response The response object to be converted (optional).
      * @return array The converted response body as an array.
-     * @throws RuntimeException If the response is empty or if the data format is unsupported.
+     * @throws ResponseConvertorException If the response is empty or if the data format is unsupported.
      */
     public function get(?ResponseInterface $response = null): array
     {
@@ -59,7 +59,7 @@ class ResponseArrayConvertor implements ResponseConvertorInterface
         }
 
         if (empty($this->response)) {
-            throw new RuntimeException('Response is empty');
+            throw new ResponseConvertorException('Response is empty');
         }
 
         $contentType = $this->getContentType($this->response);
@@ -73,7 +73,7 @@ class ResponseArrayConvertor implements ResponseConvertorInterface
         } elseif ($contentType === 'text/csv') {
             return $this->convertCsvToArray($body);
         } else {
-            throw new RuntimeException('Unsupported data format: ' . $contentType ?? 'not defined');
+            throw new ResponseConvertorException('Unsupported data format: ' . $contentType ?? 'not defined');
         }
     }
 
@@ -82,14 +82,14 @@ class ResponseArrayConvertor implements ResponseConvertorInterface
      *
      * @param string $body The JSON string.
      * @return array The converted array.
-     * @throws RuntimeException If the JSON decoding fails.
+     * @throws ResponseConvertorException If the JSON decoding fails.
      */
     public function convertJsonToArray(string $body): array
     {
         $data = json_decode($body, true);
 
         if (json_last_error() !== JSON_ERROR_NONE) {
-            throw new RuntimeException('Failed to decode JSON: ' . json_last_error_msg());
+            throw new ResponseConvertorException('Failed to decode JSON: ' . json_last_error_msg());
         }
 
         return $data;
@@ -100,7 +100,7 @@ class ResponseArrayConvertor implements ResponseConvertorInterface
      * 
      * @param string $body The XML string
      * @return array The converted array
-     * @throws RuntimeException If the XML parsing fails.
+     * @throws ResponseConvertorException If the XML parsing fails.
      */
     public function convertXmlToArray(string $body): array
     {
@@ -111,7 +111,7 @@ class ResponseArrayConvertor implements ResponseConvertorInterface
         if ($xml === false) {
             $errors = $this->formatXmlErrors(libxml_get_errors());
             libxml_clear_errors();
-            throw new RuntimeException('Failed to parse XML: ' . $errors);
+            throw new ResponseConvertorException('Failed to parse XML: ' . $errors);
         }
 
         $result = $this->normalizeXmlToArray($xml);

@@ -8,6 +8,7 @@ use Core\Interfaces\ResponseConvertorInterface;
 use Core\Interfaces\HttpClientFactoryInterface;
 use Core\Interfaces\ApiRequestInterface;
 use Core\Utils\ApiRequest;
+use Psr\EventDispatcher\EventDispatcherInterface;
 use Psr\Http\Message\UriFactoryInterface;
 use Psr\Http\Message\RequestFactoryInterface;
 use Psr\Http\Client\ClientInterface;
@@ -19,10 +20,40 @@ use Psr\Http\Message\StreamFactoryInterface;
 class HttpClientFactory implements HttpClientFactoryInterface
 {
 
+    /**
+     * PSR UriFactoryInterface implementation
+     * 
+     * @var UriFactoryInterface
+     */
     protected UriFactoryInterface $uriFactory;
+
+    /**
+     * PSR RequestFactoryInterface implementation
+     * 
+     * @var RequestFactoryInterface
+     */
     protected RequestFactoryInterface $requestFactory;
+
+    /**
+     * PSR StreamFactoryInterface implementation
+     * 
+     * @var StreamFactoryInterface
+     */
     protected StreamFactoryInterface $streamFactory;
+
+    /**
+     * PSR ClientInterface implementation
+     * 
+     * @var ClientInterface
+     */
     protected ClientInterface $httpClient;
+
+    /**
+     * PSR EventDispatcherInterface implementation for events
+     * 
+     * @var EventDispatcherInterface|null
+     */
+    protected ?EventDispatcherInterface $eventDispatcher = null;
 
     /**
      * ClientFactory constructor
@@ -30,18 +61,21 @@ class HttpClientFactory implements HttpClientFactoryInterface
      * @param RequestFactoryInterface $requestFactory The RequestFactoryInterface implementation.
      * @param StreamFactoryInterface $streamFactory The StreamFactoryInterface implementation.
      * @param ClientInterface $httpClient PSR ClientInterface implementation
+     * @param EventDispatcherInterface|null $eventDispatcher Optional PSR EventDispatcherInterface implementation
      */
     public function __construct(
             UriFactoryInterface $uriFactory,
             RequestFactoryInterface $requestFactory,
             StreamFactoryInterface $streamFactory,
-            ClientInterface $httpClient
+            ClientInterface $httpClient,
+            ?EventDispatcherInterface $eventDispatcher = null
     )
     {
         $this->uriFactory = $uriFactory;
         $this->requestFactory = $requestFactory;
         $this->streamFactory = $streamFactory;
         $this->httpClient = $httpClient;
+        $this->eventDispatcher = $eventDispatcher;
     }
 
     /**
@@ -58,7 +92,8 @@ class HttpClientFactory implements HttpClientFactoryInterface
                 $this->streamFactory,
                 $this->httpClient,
                 $convertor,
-                $uriPrefix
+                $uriPrefix,
+                $this->eventDispatcher
         );
     }
 

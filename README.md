@@ -1,20 +1,25 @@
 # le7-api-request
 API client for le7 PHP MVC framework or any PSR project
-This is an simple PSR HTTP client implementation
+This is an simple PSR API client implementation
 
 # API Request Utility
 
 This project provides a simple utility for simple making HTTP requests to an API.
 It includes a factory class for creating instances of the API request utility.
 
+It not have own PSR ClientInterface implementation, and you can use any own.
+For example: https://github.com/rnr1721/le7-http-client
+
 ## What it can?
 
 - Create requests using any API, creating GET, POST, PUT, DELETE requests
 - Allow to get ResponseInterface, array or object from response
 - Built-in converters of JSON, XML and CSV responses to object or array
-- Allow to create own converters from ResponseInterface to your data
+- Allow to create own convertors from ResponseInterface to your data
 - Allow pre-define settings for run using DI containers
 - Using different httpClients (ClientInterface), swithcing between them
+- Get last request data
+- Using events, for example for logging requests
 - Full PSR compatible
 
 ## Requirements
@@ -70,36 +75,48 @@ $headers = [
 ];
 
 // Get ResponseInterface for POST request
-$apiRequest->setUri('https://example.com/api')->post($data, $headers)->getResponse();
+$apiRequest->post('https://example.com/api', $data, $headers)->getResponse();
 
 // Get array for GET request
-$apiRequest->setUri('https://example.com/api')->get()->toArray();
+$apiRequest->get('https://example.com/api')->toArray();
 
 // Get object for PUT request
-$apiRequest->setUri('https://example.com/api')->put()->toObject();
+$apiRequest->put('https://example.com/api')->toObject();
 
 // Get ResponseInterface for PUT request
 // You can use request() method for any request
-$apiRequest->setUri('https://example.com/api')->request('PUT')->getResponse();
+$apiRequest->request('PUT','https://example.com/api')->getResponse();
 
 // Get array from response
-$apiRequest->setUri('https://example.com')->request('POST', $data, $headers)->toArray();
+$apiRequest->request('POST','https://example.com', $data, $headers)->toArray();
 
 // Get object from response
-$apiRequest->setUri('https://example.com')->request('POST', $data, $headers)->toObject();
+$apiRequest->request('POST', 'https://example.com', $data, $headers)->toObject();
 
-// This will return ResponseInterface
-$apiRequest->setUri('https://example.com')->getResponse('POST', $data, $headers);
+// This will return ResponseInterface of request
+$apiRequest->getResponse('POST', 'https://example.com', $data, $headers);
+
+// You can set Uri separately if you need it
+$apiRequest->setUri('https://example.com');
+$apiRequest->getResponse('POST', null, $data, $headers);
+$apiRequest->get();
+
+// Make something
+
+// Get last created request
+$apiRequest->getLast()->toArray();
+
 ```
 
 ## Headers
 
-You can use global headers and headers for each request. Headers for each
+You can use global headers, and headers for each request. Headers for each
 request you can inject in request methods when you call it.
 Now, you see how setup global headers, that will be added for any requests:
 
 ```php
 $headers = [
+    'My-Great-Header' => 'header_value'
     // Array with headers
 ]
 
@@ -124,7 +141,12 @@ $apiRequest->setFollowLocation(false); // Default is true
 
 ## JSON and form-data
 
-You can create request with JSON data or multipart/form-data.
+You can create these content-types of requests:
+
+- ***application/json***
+- ***application/x-www-form-urlencoded***
+- ***application/x-www-form-urlencoded***
+
 By default is json, but you can switch to form-data:
 
 ```php
@@ -141,7 +163,12 @@ like this:
 
 ```php
 // Get array from response
-$apiRequest->setUri('https://example.com')->request('POST', $data, $headers)->toArray();
+$apiRequest->request('POST', 'https://example.com', $data, $headers)->toArray();
+```
+
+```php
+// Get array from response
+$apiRequest->request('POST', 'https://example.com', $data, $headers)->toObject();
 ```
 
 Also, you can write own convertor. It must implement ResponseConvertorInterface:
@@ -217,7 +244,7 @@ $factory = new HttpClientFactory(
 // $convertor is ResponseConvertor instance
 $apiRequest = $factory->getApiRequest('https://example.com');
 
-// And now you can use it
+// And now you can use it -it will be https://example.com/contacts/get
 $result = $apiRequest->setUri('/contacts/get')->get();
 ```
 
@@ -234,6 +261,7 @@ In this example I using these components, but you can use any others:
 - Tobias Nyholm PSR-message realisation https://github.com/Nyholm/psr7
 - PHP-Di dependency injection container https://php-di.org/
 - My realisation of ClientInterface https://github.com/rnr1721/le7-http-client
+- Optional: some PSR Event Dispatcher if need logging or something else
 
 ```php
 <?php
@@ -268,4 +296,43 @@ return [
         return new \Core\HttpClient\HttpClientCurl($psr17factory);
     })
 ];
+```
+
+## PSR Events
+
+You can log requests or somehow else use event AfterApiRequestEvent:
+
+```php
+use Core\Factories\HttpClientFactory;
+use Core\Events\AfterApiRequestEvent;
+use Psr\EventDispatcher\EventDispatcherInterface;
+use Nyholm\Psr7\Factory\Psr17Factory;
+
+// Create PSR factories. Nyholm realisation is a single factory to all
+$psr17Factory = new Psr17Factory();
+
+$factory = new HttpClientFactory(
+    $psr17Factory, // UriFactoryInterface
+    $psr17Factory, // RequestFactoryInterface
+    $psr17Factory, // StreamFactoryInterface
+    $httpClient, // ClientInterface implementation
+);
+
+$apiRequest = $factory->getApiRequest();
+
+// Register the AfterApiRequestEvent
+$eventDispatcher->addListener(AfterApiRequestEvent::class, function (AfterApiRequestEvent $event) {
+    // Processing event, for example logging
+    $response = $event->getResponse();
+    $method = $event->getMethod();
+    $uri = $event->getUri();
+    $data = $event->getData();
+    $headers = $event->getHeaders();
+
+    // log response
+    // ...
+});
+
+// Send the request and get response
+$response = $apiRequest->request('GET', 'https://example.com');
 ```

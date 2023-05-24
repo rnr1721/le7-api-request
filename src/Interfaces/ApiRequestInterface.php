@@ -20,44 +20,79 @@ interface ApiRequestInterface
     /**
      * Perform a GET request.
      *
+     * @param string|null $uri Uri or uri suffox to request
      * @param array|null $data The request data.
      * @param array $headers The request headers.
      * @return ResponseConvertorDataInterface The API response.
      */
-    public function get(?array $data = null, array $headers = []): ResponseConvertorDataInterface;
+    public function get(
+            ?string $uri = null,
+            ?array $data = null,
+            array $headers = []
+    ): ResponseConvertorDataInterface;
 
     /**
      * Perform a POST request.
      *
+     * @param string|null $uri Uri or uri suffox to request
      * @param array|null $data The request data.
      * @param array $headers The request headers.
      * @return ResponseConvertorDataInterface The API response.
      */
-    public function post(?array $data = null, array $headers = []): ResponseConvertorDataInterface;
+    public function post(
+            ?string $uri = null,
+            ?array $data = null,
+            array $headers = []
+    ): ResponseConvertorDataInterface;
 
     /**
      * Perform a PUT request.
      *
+     * @param string|null $uri Uri or uri suffox to request
      * @param array|null $data The request data.
      * @param array $headers The request headers.
      * @return ResponseConvertorDataInterface The API response.
      */
-    public function put(?array $data = null, array $headers = []): ResponseConvertorDataInterface;
+    public function put(
+            ?string $uri = null,
+            ?array $data = null,
+            array $headers = []
+    ): ResponseConvertorDataInterface;
+
+    /**
+     * Perform a PATCH request.
+     *
+     * @param string|null $uri Uri or uri suffox to request
+     * @param array|null $data The request data.
+     * @param array $headers The request headers.
+     * @return ResponseConvertorDataInterface The API response.
+     */
+    public function patch(
+            ?string $uri = null,
+            ?array $data = null,
+            array $headers = []
+    ): ResponseConvertorDataInterface;
 
     /**
      * Perform a DELETE request.
      *
+     * @param string|null $uri Uri or uri suffox to request
      * @param array|null $data The request data.
      * @param array $headers The request headers.
      * @return ResponseConvertorDataInterface The API response.
      */
-    public function delete(?array $data = null, array $headers = []): ResponseConvertorDataInterface;
+    public function delete(
+            ?string $uri = null,
+            ?array $data = null,
+            array $headers = []
+    ): ResponseConvertorDataInterface;
 
     /**
      * Get convertor factory to easy convert to some format
      * and make request
      * 
      * @param string $method
+     * @param string|null $uri Uri or uri suffox to request
      * @param array|null $data
      * @param array $headers
      * @param ResponseConvertorInterface $convertor
@@ -65,6 +100,7 @@ interface ApiRequestInterface
      */
     public function request(
             string $method,
+            ?string $uri = null,
             ?array $data = null,
             array $headers = [],
             ResponseConvertorInterface $convertor = null
@@ -74,11 +110,17 @@ interface ApiRequestInterface
      * Perform a custom request and get response.
      *
      * @param string $method The request method.
+     * @param string|null $uri Uri or uri suffox to request
      * @param array|null $data The request data.
      * @param array $headers The request headers.
      * @return ResponseInterface The API response.
      */
-    public function getResponse(string $method, ?array $data = null, array $headers = []): ResponseInterface;
+    public function getResponse(
+            string $method,
+            ?string $uri = null,
+            ?array $data = null,
+            array $headers = []
+    ): ResponseInterface;
 
     /**
      * Set the URI for the request.
@@ -145,6 +187,7 @@ interface ApiRequestInterface
      * Allowed:
      * application/json
      * multipart/form-data
+     * application/x-www-form-urlencoded
      * 
      * @param string $contentType
      * @return self
@@ -213,4 +256,14 @@ interface ApiRequestInterface
      * @return self
      */
     public function setFakeResponse(ResponseInterface $response): self;
+
+    /**
+     * Get last request
+     * 
+     * @param ResponseConvertorInterface|null $convertor
+     * @return ResponseConvertorDataInterface|null
+     */
+    public function getLast(
+            ?ResponseConvertorInterface $convertor = null
+    ): ResponseConvertorDataInterface|null;
 }

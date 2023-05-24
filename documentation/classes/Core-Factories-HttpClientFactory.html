@@ -60,6 +60,10 @@
 </h4>
     <ul class="phpdocumentor-list">
                     <li>
+                <a href="namespaces/core-events.html" class="">Events</a>
+                
+            </li>
+                    <li>
                 <a href="namespaces/core-exceptions.html" class="">Exceptions</a>
                 
             </li>
@@ -126,7 +130,7 @@
         <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Factories/HttpClientFactory.php"><a href="files/src-factories-httpclientfactory.html"><abbr title="src/Factories/HttpClientFactory.php">HttpClientFactory.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">19</span>
+    <span class="phpdocumentor-element-found-in__line">20</span>
 
     </aside>
 
@@ -160,32 +164,39 @@ ClientInterface and ApiRequestInterface</dd>
 
 <dl class="phpdocumentor-table-of-contents">
                     <dt class="phpdocumentor-table-of-contents__entry -property -protected">
+    <a href="classes/Core-Factories-HttpClientFactory.html#property_eventDispatcher">$eventDispatcher</a>
+    <span>
+                        &nbsp;: <abbr title="\Psr\EventDispatcher\EventDispatcherInterface">EventDispatcherInterface</abbr>|null            </span>
+</dt>
+<dd>PSR EventDispatcherInterface implementation for events</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -protected">
     <a href="classes/Core-Factories-HttpClientFactory.html#property_httpClient">$httpClient</a>
     <span>
                         &nbsp;: <abbr title="\Psr\Http\Client\ClientInterface">ClientInterface</abbr>            </span>
 </dt>
-<dd></dd>
+<dd>PSR ClientInterface implementation</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -protected">
     <a href="classes/Core-Factories-HttpClientFactory.html#property_requestFactory">$requestFactory</a>
     <span>
                         &nbsp;: <abbr title="\Psr\Http\Message\RequestFactoryInterface">RequestFactoryInterface</abbr>            </span>
 </dt>
-<dd></dd>
+<dd>PSR RequestFactoryInterface implementation</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -protected">
     <a href="classes/Core-Factories-HttpClientFactory.html#property_streamFactory">$streamFactory</a>
     <span>
                         &nbsp;: <abbr title="\Psr\Http\Message\StreamFactoryInterface">StreamFactoryInterface</abbr>            </span>
 </dt>
-<dd></dd>
+<dd>PSR StreamFactoryInterface implementation</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -protected">
     <a href="classes/Core-Factories-HttpClientFactory.html#property_uriFactory">$uriFactory</a>
     <span>
                         &nbsp;: <abbr title="\Psr\Http\Message\UriFactoryInterface">UriFactoryInterface</abbr>            </span>
 </dt>
-<dd></dd>
+<dd>PSR UriFactoryInterface implementation</dd>
 
                 <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/Core-Factories-HttpClientFactory.html#method___construct">__construct()</a>
@@ -227,6 +238,39 @@ ClientInterface and ApiRequestInterface</dd>
             -protected
                                                         "
 >
+    <h4 class="phpdocumentor-element__name" id="property_eventDispatcher">
+        $eventDispatcher
+        <a href="classes/Core-Factories-HttpClientFactory.html#property_eventDispatcher" class="headerlink"><i class="fas fa-link"></i></a>
+        <span class="phpdocumentor-element__modifiers">
+                                </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Factories/HttpClientFactory.php"><a href="files/src-factories-httpclientfactory.html"><abbr title="src/Factories/HttpClientFactory.php">HttpClientFactory.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">56</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">PSR EventDispatcherInterface implementation for events</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+        <span class="phpdocumentor-signature__type"><abbr title="\Psr\EventDispatcher\EventDispatcherInterface">EventDispatcherInterface</abbr>|null</span>
+    <span class="phpdocumentor-signature__name">$eventDispatcher</span>
+     = <span class="phpdocumentor-signature__default-value">null</span></code>
+
+    
+    
+    
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -protected
+                                                        "
+>
     <h4 class="phpdocumentor-element__name" id="property_httpClient">
         $httpClient
         <a href="classes/Core-Factories-HttpClientFactory.html#property_httpClient" class="headerlink"><i class="fas fa-link"></i></a>
@@ -236,21 +280,20 @@ ClientInterface and ApiRequestInterface</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Factories/HttpClientFactory.php"><a href="files/src-factories-httpclientfactory.html"><abbr title="src/Factories/HttpClientFactory.php">HttpClientFactory.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">25</span>
+    <span class="phpdocumentor-element-found-in__line">49</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">PSR ClientInterface implementation</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
         <span class="phpdocumentor-signature__type"><abbr title="\Psr\Http\Client\ClientInterface">ClientInterface</abbr></span>
     <span class="phpdocumentor-signature__name">$httpClient</span>
     </code>
 
-        <section class="phpdocumentor-description"></section>
-
-        <section class="phpdocumentor-description"></section>
-
+    
+    
     
 
 </article>
@@ -270,21 +313,20 @@ ClientInterface and ApiRequestInterface</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Factories/HttpClientFactory.php"><a href="files/src-factories-httpclientfactory.html"><abbr title="src/Factories/HttpClientFactory.php">HttpClientFactory.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">23</span>
+    <span class="phpdocumentor-element-found-in__line">35</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">PSR RequestFactoryInterface implementation</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
         <span class="phpdocumentor-signature__type"><abbr title="\Psr\Http\Message\RequestFactoryInterface">RequestFactoryInterface</abbr></span>
     <span class="phpdocumentor-signature__name">$requestFactory</span>
     </code>
 
-        <section class="phpdocumentor-description"></section>
-
-        <section class="phpdocumentor-description"></section>
-
+    
+    
     
 
 </article>
@@ -304,21 +346,20 @@ ClientInterface and ApiRequestInterface</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Factories/HttpClientFactory.php"><a href="files/src-factories-httpclientfactory.html"><abbr title="src/Factories/HttpClientFactory.php">HttpClientFactory.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">24</span>
+    <span class="phpdocumentor-element-found-in__line">42</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">PSR StreamFactoryInterface implementation</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
         <span class="phpdocumentor-signature__type"><abbr title="\Psr\Http\Message\StreamFactoryInterface">StreamFactoryInterface</abbr></span>
     <span class="phpdocumentor-signature__name">$streamFactory</span>
     </code>
 
-        <section class="phpdocumentor-description"></section>
-
-        <section class="phpdocumentor-description"></section>
-
+    
+    
     
 
 </article>
@@ -338,21 +379,20 @@ ClientInterface and ApiRequestInterface</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Factories/HttpClientFactory.php"><a href="files/src-factories-httpclientfactory.html"><abbr title="src/Factories/HttpClientFactory.php">HttpClientFactory.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">22</span>
+    <span class="phpdocumentor-element-found-in__line">28</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">PSR UriFactoryInterface implementation</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
         <span class="phpdocumentor-signature__type"><abbr title="\Psr\Http\Message\UriFactoryInterface">UriFactoryInterface</abbr></span>
     <span class="phpdocumentor-signature__name">$uriFactory</span>
     </code>
 
-        <section class="phpdocumentor-description"></section>
-
-        <section class="phpdocumentor-description"></section>
-
+    
+    
     
 
 </article>
@@ -376,7 +416,7 @@ ClientInterface and ApiRequestInterface</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Factories/HttpClientFactory.php"><a href="files/src-factories-httpclientfactory.html"><abbr title="src/Factories/HttpClientFactory.php">HttpClientFactory.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">34</span>
+    <span class="phpdocumentor-element-found-in__line">66</span>
 
     </aside>
 
@@ -384,7 +424,7 @@ ClientInterface and ApiRequestInterface</dd>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">__construct</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><abbr title="\Psr\Http\Message\UriFactoryInterface">UriFactoryInterface</abbr>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$uriFactory</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type"><abbr title="\Psr\Http\Message\RequestFactoryInterface">RequestFactoryInterface</abbr>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$requestFactory</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type"><abbr title="\Psr\Http\Message\StreamFactoryInterface">StreamFactoryInterface</abbr>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$streamFactory</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type"><abbr title="\Psr\Http\Client\ClientInterface">ClientInterface</abbr>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$httpClient</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+                    <span class="phpdocumentor-signature__name">__construct</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><abbr title="\Psr\Http\Message\UriFactoryInterface">UriFactoryInterface</abbr>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$uriFactory</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type"><abbr title="\Psr\Http\Message\RequestFactoryInterface">RequestFactoryInterface</abbr>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$requestFactory</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type"><abbr title="\Psr\Http\Message\StreamFactoryInterface">StreamFactoryInterface</abbr>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$streamFactory</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type"><abbr title="\Psr\Http\Client\ClientInterface">ClientInterface</abbr>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$httpClient</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type"><abbr title="\Psr\EventDispatcher\EventDispatcherInterface">EventDispatcherInterface</abbr>|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$eventDispatcher</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
 
     
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
@@ -425,6 +465,15 @@ ClientInterface and ApiRequestInterface</dd>
 </section>
 
             </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$eventDispatcher</span>
+                : <span class="phpdocumentor-signature__argument__return-type"><abbr title="\Psr\EventDispatcher\EventDispatcherInterface">EventDispatcherInterface</abbr>|null</span>
+                 = <span class="phpdocumentor-signature__argument__default-value">null</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>Optional PSR EventDispatcherInterface implementation</p>
+</section>
+
+            </dd>
             </dl>
 
     
@@ -448,7 +497,7 @@ ClientInterface and ApiRequestInterface</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Factories/HttpClientFactory.php"><a href="files/src-factories-httpclientfactory.html"><abbr title="src/Factories/HttpClientFactory.php">HttpClientFactory.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">50</span>
+    <span class="phpdocumentor-element-found-in__line">84</span>
 
     </aside>
 
@@ -517,7 +566,7 @@ ClientInterface and ApiRequestInterface</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Factories/HttpClientFactory.php"><a href="files/src-factories-httpclientfactory.html"><abbr title="src/Factories/HttpClientFactory.php">HttpClientFactory.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">68</span>
+    <span class="phpdocumentor-element-found-in__line">103</span>
 
     </aside>
 

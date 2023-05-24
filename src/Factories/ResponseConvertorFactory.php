@@ -9,7 +9,7 @@ use Core\Interfaces\ResponseConvertorInterface;
 use Core\Interfaces\ResponseConvertorFactoryInterface;
 use Core\Utils\ResponseConvertors\ResponseArrayConvertor;
 use Core\Utils\ResponseConvertors\ResponseObjectConvertor;
-use \InvalidArgumentException;
+use Core\Exceptions\ApiRequestException;
 
 /**
  * Factory for response converters
@@ -65,7 +65,7 @@ class ResponseConvertorFactory implements ResponseConvertorFactoryInterface
     {
         $currentResponse = $response ?? $this->response;
         if ($currentResponse === null) {
-            throw new InvalidArgumentException('You must set ResponseInterface');
+            throw new ApiRequestException('You must set ResponseInterface');
         }
         return $currentResponse;
     }

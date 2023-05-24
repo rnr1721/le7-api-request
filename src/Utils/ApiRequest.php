@@ -6,16 +6,18 @@ namespace Core\Utils;
 
 use Core\Interfaces\ResponseConvertorInterface;
 use Core\Interfaces\ResponseConvertorDataInterface;
-use Core\Factories\ResponseConvertorData;
 use Core\Interfaces\ApiRequestInterface;
+use Core\Events\AfterApiRequestEvent;
+use Core\Factories\ResponseConvertorData;
 use Psr\Http\Message\UriInterface;
+use Psr\EventDispatcher\EventDispatcherInterface;
 use Psr\Http\Client\ClientInterface;
 use Psr\Http\Message\RequestFactoryInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\StreamFactoryInterface;
 use Psr\Http\Message\UriFactoryInterface;
 use Core\Exceptions\RequestException;
-use \InvalidArgumentException;
+use Core\Exceptions\ApiRequestException;
 use function http_build_query,
              filter_var,
              method_exists,
@@ -47,6 +49,16 @@ class ApiRequest implements ApiRequestInterface
     protected string $contentType = 'application/json';
 
     /**
+     * Content types that allowed to send
+     * @var array
+     */
+    protected array $allowedContentTypes = [
+        'application/json',
+        'multipart/form-data',
+        'application/x-www-form-urlencoded'
+    ];
+
+    /**
      * Global headers
      * @var array
      */
@@ -63,6 +75,13 @@ class ApiRequest implements ApiRequestInterface
      * @var string
      */
     protected string $currentHttpClient = 'default';
+
+    /**
+     * Last response if exists
+     * 
+     * @var ResponseInterface
+     */
+    protected ?ResponseInterface $lastResponse = null;
 
     /**
      * Fake response for testing purposes
@@ -101,22 +120,31 @@ class ApiRequest implements ApiRequestInterface
     protected ?ResponseConvertorInterface $convertor = null;
 
     /**
+     * Optionsl PSR event dispatcher
+     * 
+     * @var EventDispatcherInterface|null
+     */
+    protected ?EventDispatcherInterface $eventDispatcher = null;
+
+    /**
      * ApiRequest Constructor
      * 
      * @param UriFactoryInterface $uriFactory
      * @param RequestFactoryInterface $requestFactory
      * @param StreamFactoryInterface $streamFactory
      * @param ClientInterface $httpClient
-     * @param ResponseConvertorInterface $convertor
+     * @param ResponseConvertorInterface|null $convertor
      * @param string|null $uriPrefix Uri prefix
+     * @param EventDispatcherInterface|null $eventDispatcher Optional PSR events
      */
     public function __construct(
             UriFactoryInterface $uriFactory,
             RequestFactoryInterface $requestFactory,
             StreamFactoryInterface $streamFactory,
             ClientInterface $httpClient,
-            ResponseConvertorInterface $convertor = null,
-            ?string $uriPrefix = null
+            ?ResponseConvertorInterface $convertor = null,
+            ?string $uriPrefix = null,
+            ?EventDispatcherInterface $eventDispatcher = null
     )
     {
         $this->uriFactory = $uriFactory;
@@ -125,38 +153,67 @@ class ApiRequest implements ApiRequestInterface
         $this->streamFactory = $streamFactory;
         $this->convertor = $convertor;
         $this->uriPrefix = $uriPrefix ?? '';
+        $this->eventDispatcher = $eventDispatcher;
     }
 
     /**
      * @inheritDoc
      */
-    public function get(?array $data = null, array $headers = []): ResponseConvertorDataInterface
+    public function get(
+            ?string $uri = null,
+            ?array $data = null,
+            array $headers = []
+    ): ResponseConvertorDataInterface
     {
-        return $this->request('GET', $data, $headers);
+        return $this->request('GET', $uri, $data, $headers);
     }
 
     /**
      * @inheritDoc
      */
-    public function post(?array $data = null, array $headers = []): ResponseConvertorDataInterface
+    public function post(
+            ?string $uri = null,
+            ?array $data = null,
+            array $headers = []
+    ): ResponseConvertorDataInterface
     {
-        return $this->request('POST', $data, $headers);
+        return $this->request('POST', $uri, $data, $headers);
     }
 
     /**
      * @inheritDoc
      */
-    public function put(?array $data = null, array $headers = []): ResponseConvertorDataInterface
+    public function put(
+            ?string $uri = null,
+            ?array $data = null,
+            array $headers = []
+    ): ResponseConvertorDataInterface
     {
-        return $this->request('PUT', $data, $headers);
+        return $this->request('PUT', $uri, $data, $headers);
     }
 
     /**
      * @inheritDoc
      */
-    public function delete(?array $data = null, array $headers = []): ResponseConvertorDataInterface
+    public function delete(
+            ?string $uri = null,
+            ?array $data = null,
+            array $headers = []
+    ): ResponseConvertorDataInterface
     {
-        return $this->request('DELETE', $data, $headers);
+        return $this->request('DELETE', $uri, $data, $headers);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function patch(
+            ?string $uri = null,
+            ?array $data = null,
+            array $headers = []
+    ): ResponseConvertorDataInterface
+    {
+        return $this->request('PATCH', $uri, $data, $headers);
     }
 
     /**
@@ -164,12 +221,13 @@ class ApiRequest implements ApiRequestInterface
      */
     public function request(
             string $method,
+            ?string $uri = null,
             ?array $data = null,
             array $headers = [],
             ?ResponseConvertorInterface $convertor = null
     ): ResponseConvertorDataInterface
     {
-        $response = $this->getResponse($method, $data, $headers);
+        $response = $this->getResponse($method, $uri, $data, $headers);
         $currentConvertor = $convertor ?? $this->convertor;
         return new ResponseConvertorData($response, $currentConvertor);
     }
@@ -179,25 +237,30 @@ class ApiRequest implements ApiRequestInterface
      */
     public function getResponse(
             string $method,
+            ?string $uri = null,
             ?array $data = null,
             array $headers = []
     ): ResponseInterface
     {
+
+        if ($uri) {
+            $this->setUri($uri);
+        }
+
         if ($this->uri === null) {
-            throw new InvalidArgumentException('URL is not set');
+            throw new ApiRequestException('URL is not set');
         }
 
         // Process URI
-        $uri = $this->uri;
-        $request = $this->requestFactory->createRequest($method, $uri);
+        $fullUri = $this->uri;
+        $request = $this->requestFactory->createRequest($method, $fullUri);
 
         // Convert header keys to lower-case
         $lcGlobalHeaders = array_change_key_case($this->headers, CASE_LOWER);
         $lcHeaders = array_change_key_case($headers, CASE_LOWER);
 
-        // If data exists
         if ($data !== null) {
-            if ($method === 'POST' || $method === 'PUT' || $method === 'DELETE') {
+            if ($method === 'POST' || $method === 'PUT' || $method === 'DELETE' || $method === 'PATCH') {
 
                 // Detect content type
                 if (isset($lcHeaders['content-type'])) {
@@ -216,13 +279,15 @@ class ApiRequest implements ApiRequestInterface
                     $request = $request->withBody($this->streamFactory->createStream(json_encode($data)));
                 } elseif ($contentType === 'multipart/form-data') {
                     $request = $this->buildMultipartRequest($request, $data);
+                } elseif ($contentType === 'application/x-www-form-urlencoded') {
+                    $request = $request->withBody($this->streamFactory->createStream(http_build_query($data)));
                 } else {
-                    throw new InvalidArgumentException('Invalid Content-Type');
+                    throw new ApiRequestException('Invalid Content-Type. Allowed: ' . implode(',', $this->allowedContentTypes));
                 }
             } else {
                 // If it GET or not POST, PUT, DELETE request, process it
-                $uri = $uri->withQuery(http_build_query($data));
-                $request = $request->withUri($uri);
+                $fullUri = $fullUri->withQuery(http_build_query($data));
+                $request = $request->withUri($fullUri);
             }
         }
 
@@ -234,7 +299,6 @@ class ApiRequest implements ApiRequestInterface
         foreach ($lcHeaders as $name => $value) {
             $request = $request->withHeader($name, $value);
         }
-
 
         if ($this->fakeResponse === null) {
             // Get response from real HttpClient
@@ -253,6 +317,23 @@ class ApiRequest implements ApiRequestInterface
             throw new RequestException('Request failed with status code: ' . $statusCode, $request);
         }
 
+        // If we have event dispatcher, we can for example log request
+        if ($this->eventDispatcher !== null) {
+            $afterRequestEvent = new AfterApiRequestEvent(
+                    $request,
+                    $response,
+                    $method,
+                    (string) $fullUri,
+                    $data,
+                    $headers
+            );
+            $this->eventDispatcher->dispatch($afterRequestEvent);
+            $response = $afterRequestEvent->getResponse();
+        }
+
+        // Set last response
+        $this->lastResponse = $response;
+
         return $response;
     }
 
@@ -263,7 +344,7 @@ class ApiRequest implements ApiRequestInterface
     {
 
         if ($url === null && $this->uriPrefix === '') {
-            throw new InvalidArgumentException('Empty URl');
+            throw new ApiRequestException('Empty URl');
         }
 
         $currentUrl = $url ?? '';
@@ -271,7 +352,7 @@ class ApiRequest implements ApiRequestInterface
         $fullUrl = $this->uriPrefix . $currentUrl;
 
         if (!filter_var($fullUrl, FILTER_VALIDATE_URL) || empty($fullUrl)) {
-            throw new InvalidArgumentException('Invalid URL format:' . ' ' . $fullUrl);
+            throw new ApiRequestException('Invalid URL format:' . ' ' . $fullUrl);
         }
 
         $this->uri = $this->uriFactory->createUri($fullUrl);
@@ -296,7 +377,7 @@ class ApiRequest implements ApiRequestInterface
         if (method_exists($httpClient, 'setTimeout')) {
             $httpClient->setTimeout($timeout);
         } else {
-            throw new InvalidArgumentException('The HTTP client does not support setting the timeout');
+            throw new ApiRequestException('The HTTP client does not support setting the timeout');
         }
         return $this;
     }
@@ -310,7 +391,7 @@ class ApiRequest implements ApiRequestInterface
         if (method_exists($httpClient, 'setMaxRedirects')) {
             $httpClient->setMaxRedirects($maxRedirects);
         } else {
-            throw new InvalidArgumentException('The HTTP client does not support setting the max redirects');
+            throw new ApiRequestException('The HTTP client does not support setting the max redirects');
         }
         return $this;
     }
@@ -324,7 +405,7 @@ class ApiRequest implements ApiRequestInterface
         if (method_exists($httpClient, 'setFollowLocation')) {
             $httpClient->setFollowLocation($followLocation);
         } else {
-            throw new InvalidArgumentException('The HTTP client does not support setting the follow location');
+            throw new ApiRequestException('The HTTP client does not support setting the follow location');
         }
         return $this;
     }
@@ -349,12 +430,9 @@ class ApiRequest implements ApiRequestInterface
 
     public function setContentType(string $contentType): self
     {
-        $allowed = [
-            'application/json',
-            'multipart/form-data'
-        ];
-        if (!in_array($contentType, $allowed)) {
-            throw new InvalidArgumentException("Request content type incorrect. Correct: " . implode(', ', $allowed));
+
+        if (!in_array($contentType, $this->allowedContentTypes)) {
+            throw new ApiRequestException("Request content type incorrect. Correct: " . implode(', ', $this->allowedContentTypes));
         }
         return $this;
     }
@@ -378,7 +456,7 @@ class ApiRequest implements ApiRequestInterface
     ): self
     {
         if (array_key_exists($key, $this->httpClients)) {
-            throw new InvalidArgumentException("HTTP client already exists:" . ' ' . $key);
+            throw new ApiRequestException("HTTP client already exists:" . ' ' . $key);
         }
         $this->httpClients[$key] = $httpClient;
         if ($makeActive) {
@@ -393,7 +471,7 @@ class ApiRequest implements ApiRequestInterface
     public function setActiveHttpClient(string $key): self
     {
         if (!array_key_exists($key, $this->httpClients)) {
-            throw new InvalidArgumentException("HTTP client not exists:" . ' ' . $key);
+            throw new ApiRequestException("HTTP client not exists:" . ' ' . $key);
         }
         $this->currentHttpClient = $key;
         return $this;
@@ -422,6 +500,20 @@ class ApiRequest implements ApiRequestInterface
     {
         $this->convertor = $convertor;
         return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function getLast(
+            ?ResponseConvertorInterface $convertor = null
+    ): ResponseConvertorDataInterface|null
+    {
+        if ($this->lastResponse === null) {
+            return null;
+        }
+        $currentConvertor = $convertor ?? $this->convertor;
+        return new ResponseConvertorData($this->lastResponse, $currentConvertor);
     }
 
     /**
