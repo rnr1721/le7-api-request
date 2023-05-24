@@ -127,6 +127,20 @@ $apiRequest->setHeaders($headers);
 $apiRequest->setHeader('Content-Language', 'en');
 ```
 
+## Sending files with multipart/form-data
+
+```php
+$data = [
+    'name' => 'John Doe',
+    'email' => 'john.doe@example.com',
+    'file' => new SplFileInfo('/path/to/file.jpg')
+];
+
+$apiRequest->setContentType('multipart/form-data');
+
+$response = $apiRequest->post('/upload', $data);
+```
+
 ## Client setup
 
 If you are using my implementation of ClientInterface,
@@ -145,7 +159,7 @@ You can create these content-types of requests:
 
 - ***application/json***
 - ***application/x-www-form-urlencoded***
-- ***application/x-www-form-urlencoded***
+- ***multipart/form-data***
 
 By default is json, but you can switch to form-data:
 
