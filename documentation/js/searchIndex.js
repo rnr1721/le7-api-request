@@ -141,6 +141,16 @@ Search.appendIndex(
             "summary": "Get\u0020an\u0020instance\u0020of\u0020the\u0020default\u0020HTTP\u0020client.",
             "url": "classes/Core-Factories-HttpClientFactory.html#method_getHttpClient"
         },                {
+            "fqsen": "\\Core\\Factories\\HttpClientFactory\u003A\u003AsetDefaultHttpClient\u0028\u0029",
+            "name": "setDefaultHttpClient",
+            "summary": "Set\u0020default\u0020HttpClient\u0020if\u0020you\u0020not\u0020inject\u0020in\u0020constructor\nown\u0020ClientInterface\u0020implementation",
+            "url": "classes/Core-Factories-HttpClientFactory.html#method_setDefaultHttpClient"
+        },                {
+            "fqsen": "\\Core\\Factories\\HttpClientFactory\u003A\u003A\u0024defaultHttpClient",
+            "name": "defaultHttpClient",
+            "summary": "Default\u0020HttpClient\u0020if\u0020user\u0020not\u0020set\u0020own",
+            "url": "classes/Core-Factories-HttpClientFactory.html#property_defaultHttpClient"
+        },                {
             "fqsen": "\\Core\\Factories\\HttpClientFactory\u003A\u003A\u0024uriFactory",
             "name": "uriFactory",
             "summary": "PSR\u0020UriFactoryInterface\u0020implementation",
@@ -150,6 +160,11 @@ Search.appendIndex(
             "name": "requestFactory",
             "summary": "PSR\u0020RequestFactoryInterface\u0020implementation",
             "url": "classes/Core-Factories-HttpClientFactory.html#property_requestFactory"
+        },                {
+            "fqsen": "\\Core\\Factories\\HttpClientFactory\u003A\u003A\u0024responseFactory",
+            "name": "responseFactory",
+            "summary": "PSR\u0020ResponseFactory\u0020implementation",
+            "url": "classes/Core-Factories-HttpClientFactory.html#property_responseFactory"
         },                {
             "fqsen": "\\Core\\Factories\\HttpClientFactory\u003A\u003A\u0024streamFactory",
             "name": "streamFactory",
@@ -375,6 +390,11 @@ Search.appendIndex(
             "name": "getHttpClient",
             "summary": "Get\u0020an\u0020instance\u0020of\u0020the\u0020default\u0020HTTP\u0020client.",
             "url": "classes/Core-Interfaces-HttpClientFactoryInterface.html#method_getHttpClient"
+        },                {
+            "fqsen": "\\Core\\Interfaces\\HttpClientFactoryInterface\u003A\u003AsetDefaultHttpClient\u0028\u0029",
+            "name": "setDefaultHttpClient",
+            "summary": "Set\u0020default\u0020HttpClient\u0020if\u0020you\u0020not\u0020inject\u0020in\u0020constructor\nown\u0020ClientInterface\u0020implementation",
+            "url": "classes/Core-Interfaces-HttpClientFactoryInterface.html#method_setDefaultHttpClient"
         },                {
             "fqsen": "\\Core\\Interfaces\\ResponseConvertorDataInterface",
             "name": "ResponseConvertorDataInterface",

@@ -32,4 +32,13 @@ interface HttpClientFactoryInterface
      * @return ClientInterface The default HTTP client instance.
      */
     public function getHttpClient(): ClientInterface;
+
+    /**
+     * Set default HttpClient if you not inject in constructor
+     * own ClientInterface implementation
+     * 
+     * @param string $defaultClient curl or php
+     * @return self
+     */
+    public function setDefaultHttpClient(string $defaultClient): self;
 }

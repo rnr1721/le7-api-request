@@ -30,8 +30,10 @@
         "phpunit/phpunit": "^10.0",
         "nyholm/psr7": "^1.8",
         "rnr1721/psr7-server": "^1.0",
-        "php-http/mock-client": "^1.6",
-        "rnr1721/le7-http-client": "^1.0"
+        "php-http/mock-client": "^1.6"
+    },
+    "suggest": {
+        "rnr1721/le7-http-client": "Suggests installing a package that provides a compatible implementation of the PSR-18 ClientInterface for making HTTP requests. You can choose any compatible package that suits your needs."
     },
     "scripts": {
         "test": [

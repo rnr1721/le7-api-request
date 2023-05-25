@@ -60,6 +60,7 @@ $httpClient = new HttpClientFactory($psr17Factory);
 $factory = new HttpClientFactory(
     $psr17Factory, // UriFactoryInterface
     $psr17Factory, // RequestFactoryInterface
+    $psr17Factory, // ResponseFactoryInterface
     $psr17Factory, // StreamFactoryInterface
     $httpClient // ClientInterface implementation
 );
@@ -209,6 +210,7 @@ Also, you can inject convertor when create ApiRequest instance:
 $factory = new HttpClientFactory(
     $psr17Factory, // UriFactoryInterface
     $psr17Factory, // RequestFactoryInterface
+    $psr17Factory, // ResponseFactoryInterface
     $psr17Factory, // StreamFactoryInterface
     $httpClient, // ClientInterface implementation
 );
@@ -251,6 +253,7 @@ You can set the Uri prefix to add before all url in two way
 $factory = new HttpClientFactory(
     $psr17Factory, // UriFactoryInterface
     $psr17Factory, // RequestFactoryInterface
+    $psr17Factory, // ResponseFactoryInterface
     $psr17Factory, // StreamFactoryInterface
     $httpClient // ClientInterface implementation
 );
@@ -300,7 +303,7 @@ return [
         return new HttpClientFactory(
         $psr17factory,
         $psr17factory,
-        $psr17factory,
+        $psr17factory
         $c->get(ClientInterface::class)
         );
     }),
@@ -329,7 +332,7 @@ $factory = new HttpClientFactory(
     $psr17Factory, // UriFactoryInterface
     $psr17Factory, // RequestFactoryInterface
     $psr17Factory, // StreamFactoryInterface
-    $httpClient, // ClientInterface implementation
+    $httpClient, // ClientInterface implementation if not default
 );
 
 $apiRequest = $factory->getApiRequest();
