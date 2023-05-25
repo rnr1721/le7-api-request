@@ -59,10 +59,16 @@ class ApiRequest implements ApiRequestInterface
     ];
 
     /**
-     * Global headers
+     * Local headers. This headers will be cleared after each request
      * @var array
      */
     protected array $headers = [];
+
+    /**
+     * Global headers. This headers will be permanent for each request
+     * @var array
+     */
+    protected array $globalHeaders = [];
 
     /**
      * List of ClientInterface objects (httpClients)
@@ -157,7 +163,7 @@ class ApiRequest implements ApiRequestInterface
     }
 
     /**
-     * @inheritDoc
+     * @inheritdoc
      */
     public function get(
             ?string $uri = null,
@@ -169,7 +175,7 @@ class ApiRequest implements ApiRequestInterface
     }
 
     /**
-     * @inheritDoc
+     * @inheritdoc
      */
     public function post(
             ?string $uri = null,
@@ -181,7 +187,7 @@ class ApiRequest implements ApiRequestInterface
     }
 
     /**
-     * @inheritDoc
+     * @inheritdoc
      */
     public function put(
             ?string $uri = null,
@@ -193,7 +199,7 @@ class ApiRequest implements ApiRequestInterface
     }
 
     /**
-     * @inheritDoc
+     * @inheritdoc
      */
     public function delete(
             ?string $uri = null,
@@ -205,7 +211,7 @@ class ApiRequest implements ApiRequestInterface
     }
 
     /**
-     * @inheritDoc
+     * @inheritdoc
      */
     public function patch(
             ?string $uri = null,
@@ -217,7 +223,7 @@ class ApiRequest implements ApiRequestInterface
     }
 
     /**
-     * @inheritDoc
+     * @inheritdoc
      */
     public function request(
             string $method,
@@ -256,7 +262,11 @@ class ApiRequest implements ApiRequestInterface
         $request = $this->requestFactory->createRequest($method, $fullUri);
 
         // Convert header keys to lower-case
-        $lcGlobalHeaders = array_change_key_case($this->headers, CASE_LOWER);
+        // Global headers, permanent for each request
+        $lcGlobalHeaders = array_change_key_case($this->globalHeaders, CASE_LOWER);
+        // Local headers, will be cleared after request
+        $lcLocalHeaders = array_change_key_case($this->headers, CASE_LOWER);
+        // Headers from method arguments
         $lcHeaders = array_change_key_case($headers, CASE_LOWER);
 
         if ($data !== null) {
@@ -265,6 +275,8 @@ class ApiRequest implements ApiRequestInterface
                 // Detect content type
                 if (isset($lcHeaders['content-type'])) {
                     $contentType = $lcHeaders['content-type'];
+                } elseif (isset($lcLocalHeaders['content-type'])) {
+                    $contentType = $lcLocalHeaders['content-type'];
                 } elseif (isset($lcGlobalHeaders['content-type'])) {
                     $contentType = $lcGlobalHeaders['content-type'];
                 } else {
@@ -293,6 +305,10 @@ class ApiRequest implements ApiRequestInterface
 
         // Process global class headers
         foreach ($lcGlobalHeaders as $name => $value) {
+            $request = $request->withHeader($name, $value);
+        }
+        // Process local class headers
+        foreach ($lcLocalHeaders as $name => $value) {
             $request = $request->withHeader($name, $value);
         }
         // Process local request headers
@@ -334,11 +350,14 @@ class ApiRequest implements ApiRequestInterface
         // Set last response
         $this->lastResponse = $response;
 
+        $this->headers = [];
+        $this->uri = null;
+
         return $response;
     }
 
     /**
-     * @inheritDoc
+     * @inheritdoc
      */
     public function setUri(?string $url = null): self
     {
@@ -360,7 +379,7 @@ class ApiRequest implements ApiRequestInterface
     }
 
     /**
-     * @inheritDoc
+     * @inheritdoc
      */
     public function setUriPrefix(string $uriPrefix): self
     {
@@ -369,7 +388,7 @@ class ApiRequest implements ApiRequestInterface
     }
 
     /**
-     * @inheritDoc
+     * @inheritdoc
      */
     public function setTimeout(int $timeout): self
     {
@@ -383,7 +402,7 @@ class ApiRequest implements ApiRequestInterface
     }
 
     /**
-     * @inheritDoc
+     * @inheritdoc
      */
     public function setMaxRedirects(int $maxRedirects): self
     {
@@ -397,7 +416,7 @@ class ApiRequest implements ApiRequestInterface
     }
 
     /**
-     * @inheritDoc
+     * @inheritdoc
      */
     public function setFollowLocation(bool $followLocation): self
     {
@@ -411,7 +430,7 @@ class ApiRequest implements ApiRequestInterface
     }
 
     /**
-     * @inheritDoc
+     * @inheritdoc
      */
     public function setHeaders(array $headers): self
     {
@@ -420,7 +439,7 @@ class ApiRequest implements ApiRequestInterface
     }
 
     /**
-     * @inheritDoc
+     * @inheritdoc
      */
     public function setHeader(string $header, string $value): self
     {
@@ -428,6 +447,24 @@ class ApiRequest implements ApiRequestInterface
         return $this;
     }
 
+    public function setGlobalHeader(string $header, string $value): self
+    {
+        $this->globalHeaders[$header] = $value;
+        return $this;
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function setGlobalHeaders(array $headers): self
+    {
+        $this->globalHeaders = $headers;
+        return $this;
+    }
+
+    /**
+     * @inheritdoc
+     */
     public function setContentType(string $contentType): self
     {
 

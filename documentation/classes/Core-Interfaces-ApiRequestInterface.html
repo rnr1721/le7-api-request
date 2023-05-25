@@ -259,20 +259,38 @@ and make request</dd>
 <dd>Follow Location header redirects.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/Core-Interfaces-ApiRequestInterface.html#method_setHeader">setHeader()</a>
+    <a href="classes/Core-Interfaces-ApiRequestInterface.html#method_setGlobalHeader">setGlobalHeader()</a>
     <span>
                                 &nbsp;: self    </span>
 </dt>
 <dd>Set predefined header. Data will be overwriten if exists
-This will be global header. Each request will be with this header</dd>
+This will be global header. Each request will be with this header
+This headers dont clear after each requests. It permanent</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/Core-Interfaces-ApiRequestInterface.html#method_setGlobalHeaders">setGlobalHeaders()</a>
+    <span>
+                                &nbsp;: self    </span>
+</dt>
+<dd>Set predefined headers for each request
+So, each request will be send with these headers
+This is global headers</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/Core-Interfaces-ApiRequestInterface.html#method_setHeader">setHeader()</a>
+    <span>
+                                &nbsp;: self    </span>
+</dt>
+<dd>Set header for next request. Data will be overwriten if exists
+This header will be applied only for next request</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/Core-Interfaces-ApiRequestInterface.html#method_setHeaders">setHeaders()</a>
     <span>
                                 &nbsp;: self    </span>
 </dt>
-<dd>Set predefined headers for each request
-So, each request will be send with these headers</dd>
+<dd>Set headers for next request. Data will be overwriten if exists
+This headers will be applied only for next request</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/Core-Interfaces-ApiRequestInterface.html#method_setHttpClient">setHttpClient()</a>
@@ -333,7 +351,7 @@ So, each request will be send with these headers</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Interfaces/ApiRequestInterface.php"><a href="files/src-interfaces-apirequestinterface.html"><abbr title="src/Interfaces/ApiRequestInterface.php">ApiRequestInterface.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">229</span>
+    <span class="phpdocumentor-element-found-in__line">250</span>
 
     </aside>
 
@@ -526,7 +544,7 @@ So, each request will be send with these headers</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Interfaces/ApiRequestInterface.php"><a href="files/src-interfaces-apirequestinterface.html"><abbr title="src/Interfaces/ApiRequestInterface.php">ApiRequestInterface.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">211</span>
+    <span class="phpdocumentor-element-found-in__line">232</span>
 
     </aside>
 
@@ -559,7 +577,7 @@ So, each request will be send with these headers</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Interfaces/ApiRequestInterface.php"><a href="files/src-interfaces-apirequestinterface.html"><abbr title="src/Interfaces/ApiRequestInterface.php">ApiRequestInterface.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">240</span>
+    <span class="phpdocumentor-element-found-in__line">261</span>
 
     </aside>
 
@@ -592,7 +610,7 @@ So, each request will be send with these headers</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Interfaces/ApiRequestInterface.php"><a href="files/src-interfaces-apirequestinterface.html"><abbr title="src/Interfaces/ApiRequestInterface.php">ApiRequestInterface.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">266</span>
+    <span class="phpdocumentor-element-found-in__line">287</span>
 
     </aside>
 
@@ -978,7 +996,7 @@ and make request</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Interfaces/ApiRequestInterface.php"><a href="files/src-interfaces-apirequestinterface.html"><abbr title="src/Interfaces/ApiRequestInterface.php">ApiRequestInterface.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">219</span>
+    <span class="phpdocumentor-element-found-in__line">240</span>
 
     </aside>
 
@@ -1021,7 +1039,7 @@ and make request</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Interfaces/ApiRequestInterface.php"><a href="files/src-interfaces-apirequestinterface.html"><abbr title="src/Interfaces/ApiRequestInterface.php">ApiRequestInterface.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">195</span>
+    <span class="phpdocumentor-element-found-in__line">216</span>
 
     </aside>
 
@@ -1069,7 +1087,7 @@ application/x-www-form-urlencoded</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Interfaces/ApiRequestInterface.php"><a href="files/src-interfaces-apirequestinterface.html"><abbr title="src/Interfaces/ApiRequestInterface.php">ApiRequestInterface.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">248</span>
+    <span class="phpdocumentor-element-found-in__line">269</span>
 
     </aside>
 
@@ -1112,7 +1130,7 @@ application/x-www-form-urlencoded</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Interfaces/ApiRequestInterface.php"><a href="files/src-interfaces-apirequestinterface.html"><abbr title="src/Interfaces/ApiRequestInterface.php">ApiRequestInterface.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">258</span>
+    <span class="phpdocumentor-element-found-in__line">279</span>
 
     </aside>
 
@@ -1195,6 +1213,109 @@ application/x-www-form-urlencoded</p>
             -public
                                                         "
 >
+    <h4 class="phpdocumentor-element__name" id="method_setGlobalHeader">
+        setGlobalHeader()
+        <a href="classes/Core-Interfaces-ApiRequestInterface.html#method_setGlobalHeader" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Interfaces/ApiRequestInterface.php"><a href="files/src-interfaces-apirequestinterface.html"><abbr title="src/Interfaces/ApiRequestInterface.php">ApiRequestInterface.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">203</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Set predefined header. Data will be overwriten if exists
+This will be global header. Each request will be with this header
+This headers dont clear after each requests. It permanent</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">setGlobalHeader</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$header</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$value</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">self</span></code>
+
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$header</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>Header name</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$value</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>Header value</p>
+</section>
+
+            </dd>
+            </dl>
+
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">self</span>
+            &mdash;
+        
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_setGlobalHeaders">
+        setGlobalHeaders()
+        <a href="classes/Core-Interfaces-ApiRequestInterface.html#method_setGlobalHeaders" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Interfaces/ApiRequestInterface.php"><a href="files/src-interfaces-apirequestinterface.html"><abbr title="src/Interfaces/ApiRequestInterface.php">ApiRequestInterface.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">192</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Set predefined headers for each request
+So, each request will be send with these headers
+This is global headers</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">setGlobalHeaders</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$headers</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">self</span></code>
+
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$headers</span>
+                : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>Key=&gt;Value array</p>
+</section>
+
+            </dd>
+            </dl>
+
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">self</span>
+            &mdash;
+        
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
     <h4 class="phpdocumentor-element__name" id="method_setHeader">
         setHeader()
         <a href="classes/Core-Interfaces-ApiRequestInterface.html#method_setHeader" class="headerlink"><i class="fas fa-link"></i></a>
@@ -1206,8 +1327,8 @@ application/x-www-form-urlencoded</p>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Set predefined header. Data will be overwriten if exists
-This will be global header. Each request will be with this header</p>
+        <p class="phpdocumentor-summary">Set header for next request. Data will be overwriten if exists
+This header will be applied only for next request</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
@@ -1261,8 +1382,8 @@ This will be global header. Each request will be with this header</p>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Set predefined headers for each request
-So, each request will be send with these headers</p>
+        <p class="phpdocumentor-summary">Set headers for next request. Data will be overwriten if exists
+This headers will be applied only for next request</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
@@ -1303,7 +1424,7 @@ So, each request will be send with these headers</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Interfaces/ApiRequestInterface.php"><a href="files/src-interfaces-apirequestinterface.html"><abbr title="src/Interfaces/ApiRequestInterface.php">ApiRequestInterface.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">204</span>
+    <span class="phpdocumentor-element-found-in__line">225</span>
 
     </aside>
 

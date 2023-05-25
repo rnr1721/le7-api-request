@@ -20,6 +20,7 @@ For example: https://github.com/rnr1721/le7-http-client
 - Using different httpClients (ClientInterface), swithcing between them
 - Get last request data
 - Using events, for example for logging requests
+- Set global headers and headers per-request
 - Full PSR compatible
 
 ## Requirements
@@ -112,8 +113,9 @@ $apiRequest->getLast()->toArray();
 ## Headers
 
 You can use global headers, and headers for each request. Headers for each
-request you can inject in request methods when you call it.
-Now, you see how setup global headers, that will be added for any requests:
+request you can inject in request methods when you call it or by setHeader() &
+setHeaders() methods.
+Now, you will see how setup global headers, that will be added for all requests:
 
 ```php
 $headers = [
@@ -121,11 +123,29 @@ $headers = [
     // Array with headers
 ]
 
-// Set many headers
+// Set many headers for all requests in future
+$apiRequest->setGlobalHeaders($headers);
+
+// Set one global permanent header
+$apiRequest->setGlobalHeader('Content-Language', 'en');
+```
+
+Also for one-time request headers:
+
+```php
+$headers = [
+    'My-Great-Header' => 'header_value'
+    // Array with headers
+]
+
+// Set many headers for next request only
 $apiRequest->setHeaders($headers);
 
-// Set one header
+// Set one header for next request only
 $apiRequest->setHeader('Content-Language', 'en');
+
+// Also you can set one-time header in method:
+$apiRequest->get('https://example.com', null, $headers);
 ```
 
 ## Sending files with multipart/form-data

@@ -163,17 +163,17 @@ interface ApiRequestInterface
     public function setFollowLocation(bool $followLocation): self;
 
     /**
-     * Set predefined headers for each request
-     * So, each request will be send with these headers
+     * Set headers for next request. Data will be overwriten if exists
+     * This headers will be applied only for next request
      * 
      * @param array $headers Key=>Value array
      * @return self
      */
     public function setHeaders(array $headers): self;
-
+    
     /**
-     * Set predefined header. Data will be overwriten if exists
-     * This will be global header. Each request will be with this header
+     * Set header for next request. Data will be overwriten if exists
+     * This header will be applied only for next request
      * 
      * @param string $header Header name
      * @param string $value Header value
@@ -181,6 +181,27 @@ interface ApiRequestInterface
      */
     public function setHeader(string $header, string $value): self;
 
+    /**
+     * Set predefined headers for each request
+     * So, each request will be send with these headers
+     * This is global headers
+     * 
+     * @param array $headers Key=>Value array
+     * @return self
+     */
+    public function setGlobalHeaders(array $headers): self;
+    
+    /**
+     * Set predefined header. Data will be overwriten if exists
+     * This will be global header. Each request will be with this header
+     * This headers dont clear after each requests. It permanent
+     * 
+     * @param string $header Header name
+     * @param string $value Header value
+     * @return self
+     */
+    public function setGlobalHeader(string $header, string $value): self;
+    
     /**
      * Set data format
      * 

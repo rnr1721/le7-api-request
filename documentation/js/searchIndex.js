@@ -323,13 +323,23 @@ Search.appendIndex(
         },                {
             "fqsen": "\\Core\\Interfaces\\ApiRequestInterface\u003A\u003AsetHeaders\u0028\u0029",
             "name": "setHeaders",
-            "summary": "Set\u0020predefined\u0020headers\u0020for\u0020each\u0020request\nSo,\u0020each\u0020request\u0020will\u0020be\u0020send\u0020with\u0020these\u0020headers",
+            "summary": "Set\u0020headers\u0020for\u0020next\u0020request.\u0020Data\u0020will\u0020be\u0020overwriten\u0020if\u0020exists\nThis\u0020headers\u0020will\u0020be\u0020applied\u0020only\u0020for\u0020next\u0020request",
             "url": "classes/Core-Interfaces-ApiRequestInterface.html#method_setHeaders"
         },                {
             "fqsen": "\\Core\\Interfaces\\ApiRequestInterface\u003A\u003AsetHeader\u0028\u0029",
             "name": "setHeader",
-            "summary": "Set\u0020predefined\u0020header.\u0020Data\u0020will\u0020be\u0020overwriten\u0020if\u0020exists\nThis\u0020will\u0020be\u0020global\u0020header.\u0020Each\u0020request\u0020will\u0020be\u0020with\u0020this\u0020header",
+            "summary": "Set\u0020header\u0020for\u0020next\u0020request.\u0020Data\u0020will\u0020be\u0020overwriten\u0020if\u0020exists\nThis\u0020header\u0020will\u0020be\u0020applied\u0020only\u0020for\u0020next\u0020request",
             "url": "classes/Core-Interfaces-ApiRequestInterface.html#method_setHeader"
+        },                {
+            "fqsen": "\\Core\\Interfaces\\ApiRequestInterface\u003A\u003AsetGlobalHeaders\u0028\u0029",
+            "name": "setGlobalHeaders",
+            "summary": "Set\u0020predefined\u0020headers\u0020for\u0020each\u0020request\nSo,\u0020each\u0020request\u0020will\u0020be\u0020send\u0020with\u0020these\u0020headers\nThis\u0020is\u0020global\u0020headers",
+            "url": "classes/Core-Interfaces-ApiRequestInterface.html#method_setGlobalHeaders"
+        },                {
+            "fqsen": "\\Core\\Interfaces\\ApiRequestInterface\u003A\u003AsetGlobalHeader\u0028\u0029",
+            "name": "setGlobalHeader",
+            "summary": "Set\u0020predefined\u0020header.\u0020Data\u0020will\u0020be\u0020overwriten\u0020if\u0020exists\nThis\u0020will\u0020be\u0020global\u0020header.\u0020Each\u0020request\u0020will\u0020be\u0020with\u0020this\u0020header\nThis\u0020headers\u0020dont\u0020clear\u0020after\u0020each\u0020requests.\u0020It\u0020permanent",
+            "url": "classes/Core-Interfaces-ApiRequestInterface.html#method_setGlobalHeader"
         },                {
             "fqsen": "\\Core\\Interfaces\\ApiRequestInterface\u003A\u003AsetContentType\u0028\u0029",
             "name": "setContentType",
@@ -523,13 +533,23 @@ Search.appendIndex(
         },                {
             "fqsen": "\\Core\\Utils\\ApiRequest\u003A\u003AsetHeaders\u0028\u0029",
             "name": "setHeaders",
-            "summary": "Set\u0020predefined\u0020headers\u0020for\u0020each\u0020request\nSo,\u0020each\u0020request\u0020will\u0020be\u0020send\u0020with\u0020these\u0020headers",
+            "summary": "Set\u0020headers\u0020for\u0020next\u0020request.\u0020Data\u0020will\u0020be\u0020overwriten\u0020if\u0020exists\nThis\u0020headers\u0020will\u0020be\u0020applied\u0020only\u0020for\u0020next\u0020request",
             "url": "classes/Core-Utils-ApiRequest.html#method_setHeaders"
         },                {
             "fqsen": "\\Core\\Utils\\ApiRequest\u003A\u003AsetHeader\u0028\u0029",
             "name": "setHeader",
-            "summary": "Set\u0020predefined\u0020header.\u0020Data\u0020will\u0020be\u0020overwriten\u0020if\u0020exists\nThis\u0020will\u0020be\u0020global\u0020header.\u0020Each\u0020request\u0020will\u0020be\u0020with\u0020this\u0020header",
+            "summary": "Set\u0020header\u0020for\u0020next\u0020request.\u0020Data\u0020will\u0020be\u0020overwriten\u0020if\u0020exists\nThis\u0020header\u0020will\u0020be\u0020applied\u0020only\u0020for\u0020next\u0020request",
             "url": "classes/Core-Utils-ApiRequest.html#method_setHeader"
+        },                {
+            "fqsen": "\\Core\\Utils\\ApiRequest\u003A\u003AsetGlobalHeader\u0028\u0029",
+            "name": "setGlobalHeader",
+            "summary": "Set\u0020predefined\u0020header.\u0020Data\u0020will\u0020be\u0020overwriten\u0020if\u0020exists\nThis\u0020will\u0020be\u0020global\u0020header.\u0020Each\u0020request\u0020will\u0020be\u0020with\u0020this\u0020header\nThis\u0020headers\u0020dont\u0020clear\u0020after\u0020each\u0020requests.\u0020It\u0020permanent",
+            "url": "classes/Core-Utils-ApiRequest.html#method_setGlobalHeader"
+        },                {
+            "fqsen": "\\Core\\Utils\\ApiRequest\u003A\u003AsetGlobalHeaders\u0028\u0029",
+            "name": "setGlobalHeaders",
+            "summary": "Set\u0020predefined\u0020headers\u0020for\u0020each\u0020request\nSo,\u0020each\u0020request\u0020will\u0020be\u0020send\u0020with\u0020these\u0020headers\nThis\u0020is\u0020global\u0020headers",
+            "url": "classes/Core-Utils-ApiRequest.html#method_setGlobalHeaders"
         },                {
             "fqsen": "\\Core\\Utils\\ApiRequest\u003A\u003AsetContentType\u0028\u0029",
             "name": "setContentType",
@@ -593,8 +613,13 @@ Search.appendIndex(
         },                {
             "fqsen": "\\Core\\Utils\\ApiRequest\u003A\u003A\u0024headers",
             "name": "headers",
-            "summary": "Global\u0020headers",
+            "summary": "Local\u0020headers.\u0020This\u0020headers\u0020will\u0020be\u0020cleared\u0020after\u0020each\u0020request",
             "url": "classes/Core-Utils-ApiRequest.html#property_headers"
+        },                {
+            "fqsen": "\\Core\\Utils\\ApiRequest\u003A\u003A\u0024globalHeaders",
+            "name": "globalHeaders",
+            "summary": "Global\u0020headers.\u0020This\u0020headers\u0020will\u0020be\u0020permanent\u0020for\u0020each\u0020request",
+            "url": "classes/Core-Utils-ApiRequest.html#property_globalHeaders"
         },                {
             "fqsen": "\\Core\\Utils\\ApiRequest\u003A\u003A\u0024httpClients",
             "name": "httpClients",

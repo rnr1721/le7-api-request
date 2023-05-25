@@ -210,11 +210,18 @@
 <dd>Fake response for testing purposes</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -protected">
+    <a href="classes/Core-Utils-ApiRequest.html#property_globalHeaders">$globalHeaders</a>
+    <span>
+                        &nbsp;: array&lt;string|int, mixed&gt;            </span>
+</dt>
+<dd>Global headers. This headers will be permanent for each request</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -protected">
     <a href="classes/Core-Utils-ApiRequest.html#property_headers">$headers</a>
     <span>
                         &nbsp;: array&lt;string|int, mixed&gt;            </span>
 </dt>
-<dd>Global headers</dd>
+<dd>Local headers. This headers will be cleared after each request</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -protected">
     <a href="classes/Core-Utils-ApiRequest.html#property_httpClients">$httpClients</a>
@@ -386,20 +393,38 @@ and make request</dd>
 <dd>Follow Location header redirects.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/Core-Utils-ApiRequest.html#method_setHeader">setHeader()</a>
+    <a href="classes/Core-Utils-ApiRequest.html#method_setGlobalHeader">setGlobalHeader()</a>
     <span>
                                 &nbsp;: self    </span>
 </dt>
 <dd>Set predefined header. Data will be overwriten if exists
-This will be global header. Each request will be with this header</dd>
+This will be global header. Each request will be with this header
+This headers dont clear after each requests. It permanent</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/Core-Utils-ApiRequest.html#method_setGlobalHeaders">setGlobalHeaders()</a>
+    <span>
+                                &nbsp;: self    </span>
+</dt>
+<dd>Set predefined headers for each request
+So, each request will be send with these headers
+This is global headers</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/Core-Utils-ApiRequest.html#method_setHeader">setHeader()</a>
+    <span>
+                                &nbsp;: self    </span>
+</dt>
+<dd>Set header for next request. Data will be overwriten if exists
+This header will be applied only for next request</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/Core-Utils-ApiRequest.html#method_setHeaders">setHeaders()</a>
     <span>
                                 &nbsp;: self    </span>
 </dt>
-<dd>Set predefined headers for each request
-So, each request will be send with these headers</dd>
+<dd>Set headers for next request. Data will be overwriten if exists
+This headers will be applied only for next request</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/Core-Utils-ApiRequest.html#method_setHttpClient">setHttpClient()</a>
@@ -544,7 +569,7 @@ So, each request will be send with these headers</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Utils/ApiRequest.php"><a href="files/src-utils-apirequest.html"><abbr title="src/Utils/ApiRequest.php">ApiRequest.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">120</span>
+    <span class="phpdocumentor-element-found-in__line">126</span>
 
     </aside>
 
@@ -577,7 +602,7 @@ So, each request will be send with these headers</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Utils/ApiRequest.php"><a href="files/src-utils-apirequest.html"><abbr title="src/Utils/ApiRequest.php">ApiRequest.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">77</span>
+    <span class="phpdocumentor-element-found-in__line">83</span>
 
     </aside>
 
@@ -610,7 +635,7 @@ So, each request will be send with these headers</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Utils/ApiRequest.php"><a href="files/src-utils-apirequest.html"><abbr title="src/Utils/ApiRequest.php">ApiRequest.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">127</span>
+    <span class="phpdocumentor-element-found-in__line">133</span>
 
     </aside>
 
@@ -643,7 +668,7 @@ So, each request will be send with these headers</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Utils/ApiRequest.php"><a href="files/src-utils-apirequest.html"><abbr title="src/Utils/ApiRequest.php">ApiRequest.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">90</span>
+    <span class="phpdocumentor-element-found-in__line">96</span>
 
     </aside>
 
@@ -654,6 +679,39 @@ So, each request will be send with these headers</dd>
         <span class="phpdocumentor-signature__type"><abbr title="\Psr\Http\Message\ResponseInterface">ResponseInterface</abbr>|null</span>
     <span class="phpdocumentor-signature__name">$fakeResponse</span>
      = <span class="phpdocumentor-signature__default-value">null</span></code>
+
+    
+    
+    
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -protected
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="property_globalHeaders">
+        $globalHeaders
+        <a href="classes/Core-Utils-ApiRequest.html#property_globalHeaders" class="headerlink"><i class="fas fa-link"></i></a>
+        <span class="phpdocumentor-element__modifiers">
+                                </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Utils/ApiRequest.php"><a href="files/src-utils-apirequest.html"><abbr title="src/Utils/ApiRequest.php">ApiRequest.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">71</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Global headers. This headers will be permanent for each request</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+        <span class="phpdocumentor-signature__type">array&lt;string|int, mixed&gt;</span>
+    <span class="phpdocumentor-signature__name">$globalHeaders</span>
+     = <span class="phpdocumentor-signature__default-value">[]</span></code>
 
     
     
@@ -680,7 +738,7 @@ So, each request will be send with these headers</dd>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Global headers</p>
+        <p class="phpdocumentor-summary">Local headers. This headers will be cleared after each request</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
@@ -709,7 +767,7 @@ So, each request will be send with these headers</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Utils/ApiRequest.php"><a href="files/src-utils-apirequest.html"><abbr title="src/Utils/ApiRequest.php">ApiRequest.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">71</span>
+    <span class="phpdocumentor-element-found-in__line">77</span>
 
     </aside>
 
@@ -742,7 +800,7 @@ So, each request will be send with these headers</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Utils/ApiRequest.php"><a href="files/src-utils-apirequest.html"><abbr title="src/Utils/ApiRequest.php">ApiRequest.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">84</span>
+    <span class="phpdocumentor-element-found-in__line">90</span>
 
     </aside>
 
@@ -775,7 +833,7 @@ So, each request will be send with these headers</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Utils/ApiRequest.php"><a href="files/src-utils-apirequest.html"><abbr title="src/Utils/ApiRequest.php">ApiRequest.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">102</span>
+    <span class="phpdocumentor-element-found-in__line">108</span>
 
     </aside>
 
@@ -808,7 +866,7 @@ So, each request will be send with these headers</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Utils/ApiRequest.php"><a href="files/src-utils-apirequest.html"><abbr title="src/Utils/ApiRequest.php">ApiRequest.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">114</span>
+    <span class="phpdocumentor-element-found-in__line">120</span>
 
     </aside>
 
@@ -841,7 +899,7 @@ So, each request will be send with these headers</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Utils/ApiRequest.php"><a href="files/src-utils-apirequest.html"><abbr title="src/Utils/ApiRequest.php">ApiRequest.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">108</span>
+    <span class="phpdocumentor-element-found-in__line">114</span>
 
     </aside>
 
@@ -874,7 +932,7 @@ So, each request will be send with these headers</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Utils/ApiRequest.php"><a href="files/src-utils-apirequest.html"><abbr title="src/Utils/ApiRequest.php">ApiRequest.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">96</span>
+    <span class="phpdocumentor-element-found-in__line">102</span>
 
     </aside>
 
@@ -944,7 +1002,7 @@ So, each request will be send with these headers</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Utils/ApiRequest.php"><a href="files/src-utils-apirequest.html"><abbr title="src/Utils/ApiRequest.php">ApiRequest.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">140</span>
+    <span class="phpdocumentor-element-found-in__line">146</span>
 
     </aside>
 
@@ -1033,7 +1091,7 @@ So, each request will be send with these headers</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Utils/ApiRequest.php"><a href="files/src-utils-apirequest.html"><abbr title="src/Utils/ApiRequest.php">ApiRequest.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">452</span>
+    <span class="phpdocumentor-element-found-in__line">489</span>
 
     </aside>
 
@@ -1109,7 +1167,7 @@ So, each request will be send with these headers</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Utils/ApiRequest.php"><a href="files/src-utils-apirequest.html"><abbr title="src/Utils/ApiRequest.php">ApiRequest.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">198</span>
+    <span class="phpdocumentor-element-found-in__line">204</span>
 
     </aside>
 
@@ -1158,7 +1216,7 @@ So, each request will be send with these headers</dd>
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">inheritDoc</span>
+                    <span class="phpdocumentor-tag__name">inheritdoc</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
                                                                                 
@@ -1187,7 +1245,7 @@ So, each request will be send with these headers</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Utils/ApiRequest.php"><a href="files/src-utils-apirequest.html"><abbr title="src/Utils/ApiRequest.php">ApiRequest.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">162</span>
+    <span class="phpdocumentor-element-found-in__line">168</span>
 
     </aside>
 
@@ -1236,7 +1294,7 @@ So, each request will be send with these headers</dd>
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">inheritDoc</span>
+                    <span class="phpdocumentor-tag__name">inheritdoc</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
                                                                                 
@@ -1265,7 +1323,7 @@ So, each request will be send with these headers</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Utils/ApiRequest.php"><a href="files/src-utils-apirequest.html"><abbr title="src/Utils/ApiRequest.php">ApiRequest.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">491</span>
+    <span class="phpdocumentor-element-found-in__line">528</span>
 
     </aside>
 
@@ -1311,7 +1369,7 @@ So, each request will be send with these headers</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Utils/ApiRequest.php"><a href="files/src-utils-apirequest.html"><abbr title="src/Utils/ApiRequest.php">ApiRequest.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">483</span>
+    <span class="phpdocumentor-element-found-in__line">520</span>
 
     </aside>
 
@@ -1357,7 +1415,7 @@ So, each request will be send with these headers</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Utils/ApiRequest.php"><a href="files/src-utils-apirequest.html"><abbr title="src/Utils/ApiRequest.php">ApiRequest.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">508</span>
+    <span class="phpdocumentor-element-found-in__line">545</span>
 
     </aside>
 
@@ -1413,7 +1471,7 @@ So, each request will be send with these headers</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Utils/ApiRequest.php"><a href="files/src-utils-apirequest.html"><abbr title="src/Utils/ApiRequest.php">ApiRequest.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">238</span>
+    <span class="phpdocumentor-element-found-in__line">244</span>
 
     </aside>
 
@@ -1500,7 +1558,7 @@ So, each request will be send with these headers</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Utils/ApiRequest.php"><a href="files/src-utils-apirequest.html"><abbr title="src/Utils/ApiRequest.php">ApiRequest.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">210</span>
+    <span class="phpdocumentor-element-found-in__line">216</span>
 
     </aside>
 
@@ -1549,7 +1607,7 @@ So, each request will be send with these headers</dd>
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">inheritDoc</span>
+                    <span class="phpdocumentor-tag__name">inheritdoc</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
                                                                                 
@@ -1578,7 +1636,7 @@ So, each request will be send with these headers</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Utils/ApiRequest.php"><a href="files/src-utils-apirequest.html"><abbr title="src/Utils/ApiRequest.php">ApiRequest.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">174</span>
+    <span class="phpdocumentor-element-found-in__line">180</span>
 
     </aside>
 
@@ -1627,7 +1685,7 @@ So, each request will be send with these headers</dd>
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">inheritDoc</span>
+                    <span class="phpdocumentor-tag__name">inheritdoc</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
                                                                                 
@@ -1656,7 +1714,7 @@ So, each request will be send with these headers</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Utils/ApiRequest.php"><a href="files/src-utils-apirequest.html"><abbr title="src/Utils/ApiRequest.php">ApiRequest.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">186</span>
+    <span class="phpdocumentor-element-found-in__line">192</span>
 
     </aside>
 
@@ -1705,7 +1763,7 @@ So, each request will be send with these headers</dd>
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">inheritDoc</span>
+                    <span class="phpdocumentor-tag__name">inheritdoc</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
                                                                                 
@@ -1734,7 +1792,7 @@ So, each request will be send with these headers</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Utils/ApiRequest.php"><a href="files/src-utils-apirequest.html"><abbr title="src/Utils/ApiRequest.php">ApiRequest.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">222</span>
+    <span class="phpdocumentor-element-found-in__line">228</span>
 
     </aside>
 
@@ -1794,7 +1852,7 @@ and make request</p>
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">inheritDoc</span>
+                    <span class="phpdocumentor-tag__name">inheritdoc</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
                                                                                 
@@ -1821,7 +1879,7 @@ and make request</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Utils/ApiRequest.php"><a href="files/src-utils-apirequest.html"><abbr title="src/Utils/ApiRequest.php">ApiRequest.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">471</span>
+    <span class="phpdocumentor-element-found-in__line">508</span>
 
     </aside>
 
@@ -1877,7 +1935,7 @@ and make request</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Utils/ApiRequest.php"><a href="files/src-utils-apirequest.html"><abbr title="src/Utils/ApiRequest.php">ApiRequest.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">431</span>
+    <span class="phpdocumentor-element-found-in__line">468</span>
 
     </aside>
 
@@ -1887,12 +1945,7 @@ and make request</p>
     <span class="phpdocumentor-signature__visibility">public</span>
                     <span class="phpdocumentor-signature__name">setContentType</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$contentType</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">self</span></code>
 
-        <section class="phpdocumentor-description"><p>Allowed:
-application/json
-multipart/form-data
-application/x-www-form-urlencoded</p>
-</section>
-
+    
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
@@ -1905,6 +1958,19 @@ application/x-www-form-urlencoded</p>
             </dl>
 
     
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">inheritdoc</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                             
+                                    </dd>
+                        </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">self</span>
@@ -1925,7 +1991,7 @@ application/x-www-form-urlencoded</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Utils/ApiRequest.php"><a href="files/src-utils-apirequest.html"><abbr title="src/Utils/ApiRequest.php">ApiRequest.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">499</span>
+    <span class="phpdocumentor-element-found-in__line">536</span>
 
     </aside>
 
@@ -1981,7 +2047,7 @@ application/x-www-form-urlencoded</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Utils/ApiRequest.php"><a href="files/src-utils-apirequest.html"><abbr title="src/Utils/ApiRequest.php">ApiRequest.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">522</span>
+    <span class="phpdocumentor-element-found-in__line">559</span>
 
     </aside>
 
@@ -2039,7 +2105,7 @@ application/x-www-form-urlencoded</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Utils/ApiRequest.php"><a href="files/src-utils-apirequest.html"><abbr title="src/Utils/ApiRequest.php">ApiRequest.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">402</span>
+    <span class="phpdocumentor-element-found-in__line">421</span>
 
     </aside>
 
@@ -2070,7 +2136,123 @@ application/x-www-form-urlencoded</p>
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">inheritDoc</span>
+                    <span class="phpdocumentor-tag__name">inheritdoc</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                             
+                                    </dd>
+                        </dl>
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">self</span>
+            &mdash;
+        
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_setGlobalHeader">
+        setGlobalHeader()
+        <a href="classes/Core-Utils-ApiRequest.html#method_setGlobalHeader" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Utils/ApiRequest.php"><a href="files/src-utils-apirequest.html"><abbr title="src/Utils/ApiRequest.php">ApiRequest.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">450</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Set predefined header. Data will be overwriten if exists
+This will be global header. Each request will be with this header
+This headers dont clear after each requests. It permanent</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">setGlobalHeader</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$header</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$value</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">self</span></code>
+
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$header</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>Header name</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$value</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>Header value</p>
+</section>
+
+            </dd>
+            </dl>
+
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">self</span>
+            &mdash;
+        
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_setGlobalHeaders">
+        setGlobalHeaders()
+        <a href="classes/Core-Utils-ApiRequest.html#method_setGlobalHeaders" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Utils/ApiRequest.php"><a href="files/src-utils-apirequest.html"><abbr title="src/Utils/ApiRequest.php">ApiRequest.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">459</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Set predefined headers for each request
+So, each request will be send with these headers
+This is global headers</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">setGlobalHeaders</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$headers</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">self</span></code>
+
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$headers</span>
+                : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>Key=&gt;Value array</p>
+</section>
+
+            </dd>
+            </dl>
+
+    
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">inheritdoc</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
                                                                                 
@@ -2097,12 +2279,12 @@ application/x-www-form-urlencoded</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Utils/ApiRequest.php"><a href="files/src-utils-apirequest.html"><abbr title="src/Utils/ApiRequest.php">ApiRequest.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">425</span>
+    <span class="phpdocumentor-element-found-in__line">444</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Set predefined header. Data will be overwriten if exists
-This will be global header. Each request will be with this header</p>
+        <p class="phpdocumentor-summary">Set header for next request. Data will be overwriten if exists
+This header will be applied only for next request</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
@@ -2138,7 +2320,7 @@ This will be global header. Each request will be with this header</p>
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">inheritDoc</span>
+                    <span class="phpdocumentor-tag__name">inheritdoc</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
                                                                                 
@@ -2165,12 +2347,12 @@ This will be global header. Each request will be with this header</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Utils/ApiRequest.php"><a href="files/src-utils-apirequest.html"><abbr title="src/Utils/ApiRequest.php">ApiRequest.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">416</span>
+    <span class="phpdocumentor-element-found-in__line">435</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Set predefined headers for each request
-So, each request will be send with these headers</p>
+        <p class="phpdocumentor-summary">Set headers for next request. Data will be overwriten if exists
+This headers will be applied only for next request</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
@@ -2197,7 +2379,7 @@ So, each request will be send with these headers</p>
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">inheritDoc</span>
+                    <span class="phpdocumentor-tag__name">inheritdoc</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
                                                                                 
@@ -2224,7 +2406,7 @@ So, each request will be send with these headers</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Utils/ApiRequest.php"><a href="files/src-utils-apirequest.html"><abbr title="src/Utils/ApiRequest.php">ApiRequest.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">443</span>
+    <span class="phpdocumentor-element-found-in__line">480</span>
 
     </aside>
 
@@ -2282,7 +2464,7 @@ So, each request will be send with these headers</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Utils/ApiRequest.php"><a href="files/src-utils-apirequest.html"><abbr title="src/Utils/ApiRequest.php">ApiRequest.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">388</span>
+    <span class="phpdocumentor-element-found-in__line">407</span>
 
     </aside>
 
@@ -2313,7 +2495,7 @@ So, each request will be send with these headers</p>
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">inheritDoc</span>
+                    <span class="phpdocumentor-tag__name">inheritdoc</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
                                                                                 
@@ -2340,7 +2522,7 @@ So, each request will be send with these headers</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Utils/ApiRequest.php"><a href="files/src-utils-apirequest.html"><abbr title="src/Utils/ApiRequest.php">ApiRequest.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">374</span>
+    <span class="phpdocumentor-element-found-in__line">393</span>
 
     </aside>
 
@@ -2371,7 +2553,7 @@ So, each request will be send with these headers</p>
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">inheritDoc</span>
+                    <span class="phpdocumentor-tag__name">inheritdoc</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
                                                                                 
@@ -2398,7 +2580,7 @@ So, each request will be send with these headers</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Utils/ApiRequest.php"><a href="files/src-utils-apirequest.html"><abbr title="src/Utils/ApiRequest.php">ApiRequest.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">343</span>
+    <span class="phpdocumentor-element-found-in__line">362</span>
 
     </aside>
 
@@ -2429,7 +2611,7 @@ So, each request will be send with these headers</p>
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">inheritDoc</span>
+                    <span class="phpdocumentor-tag__name">inheritdoc</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
                                                                                 
@@ -2456,7 +2638,7 @@ So, each request will be send with these headers</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Utils/ApiRequest.php"><a href="files/src-utils-apirequest.html"><abbr title="src/Utils/ApiRequest.php">ApiRequest.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">365</span>
+    <span class="phpdocumentor-element-found-in__line">384</span>
 
     </aside>
 
@@ -2487,7 +2669,7 @@ So, each request will be send with these headers</p>
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">inheritDoc</span>
+                    <span class="phpdocumentor-tag__name">inheritdoc</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
                                                                                 
