@@ -301,10 +301,11 @@ return [
         /** @var Psr17Factory $psr17factory */
         $psr17factory = $c->get(Psr17Factory::class);
         return new HttpClientFactory(
-        $psr17factory,
-        $psr17factory,
-        $psr17factory
-        $c->get(ClientInterface::class)
+        $psr17factory, // UriFactoryInterface
+        $psr17factory, // RequestFactoryInterface
+        $psr17factory, // ResponseFactoryInterface
+        $psr17factory  // StreamFactoryInterface
+        $c->get(ClientInterface::class) // ClientInterface
         );
     }),
     ClientInterface::class => factory(function (ContainerInterface $c) {
