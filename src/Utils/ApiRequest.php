@@ -19,9 +19,11 @@ use Psr\Http\Message\UriFactoryInterface;
 use Core\Exceptions\RequestException;
 use Core\Exceptions\ApiRequestException;
 use function http_build_query,
-             filter_var,
+             parse_url,
              method_exists,
              array_change_key_case,
+             array_keys,
+             array_key_exists,
              strtolower;
 use const CASE_LOWER;
 
@@ -370,8 +372,10 @@ class ApiRequest implements ApiRequestInterface
 
         $fullUrl = $this->uriPrefix . $currentUrl;
 
-        if (!filter_var($fullUrl, FILTER_VALIDATE_URL) || empty($fullUrl)) {
-            throw new ApiRequestException('Invalid URL format:' . ' ' . $fullUrl);
+        $urlParts = parse_url($fullUrl);
+
+        if ($urlParts === false || !isset($urlParts['scheme'], $urlParts['host'])) {
+            throw new ApiRequestException('Invalid URL format: ' . $fullUrl);
         }
 
         $this->uri = $this->uriFactory->createUri($fullUrl);
